@@ -53,7 +53,7 @@ const ReactTable = ({columns, data, showFilter, goTo}) => {
                 {headerGroups.map(headerGroup => (
                     <tr className="text-left border-b-2 border-secondaryBackground" {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map(column => (
-                            <th className="px-3 py-3" {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')} {renderSortIcon(column)}</th>
+                            <th className="px-3 py-3 text-greyDark font-normal" {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')} {renderSortIcon(column)}</th>
                         ))}
                     </tr>
                 ))}

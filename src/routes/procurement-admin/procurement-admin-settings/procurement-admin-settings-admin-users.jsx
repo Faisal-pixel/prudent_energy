@@ -1,6 +1,10 @@
 import { Outlet } from "react-router-dom";
+import ReactTable from "../../../components/react-table.component";
+import { useContext } from "react";
+import { ProcurementAdminContext } from "../context/procurement-admin.context";
 
 const ProcurementAdminSettingsAdminUsers = () => {
+    const {procurementAdminAdminUsersColumns, procurementAdminAdminUsersData} = useContext(ProcurementAdminContext);
     return <>
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className="flex justify-between">
@@ -11,7 +15,7 @@ const ProcurementAdminSettingsAdminUsers = () => {
 
             <div className="bg-white px-3 py-4">
                 
-                The remaining stuffs
+                <ReactTable columns={procurementAdminAdminUsersColumns} data={procurementAdminAdminUsersData}/>
             </div>
             
         </div>
