@@ -7,6 +7,7 @@ import ProcurementAdminDashboard from "./procurement-admin-dashboard/procurement
 import ProcurementAdminRecentRequisitionsDetails from "./procurement-admin-dashboard/procurement-admin-dashboard-details";
 import UnderlinedNav from "../../components/underlined-nav.component";
 import ProcurementAdminSettingsAdminUsers from "./procurement-admin-settings/procurement-admin-settings-admin-users";
+import ProcurementAdminSettingsUserRoles from "./procurement-admin-settings/procurement-admin-settings-user-roles";
 
 
 const ProcurementAdminRoutes = () => {
@@ -24,7 +25,7 @@ const ProcurementAdminRoutes = () => {
                         <Route path="admin-users" element={<ProcurementAdminSettingsAdminUsers />}>
                             <Route index element={<UnderlinedNav navigationElements={procurementAdminSettingsUnderlinedNavigations} includeButton="Add New User"/>} />
                         </Route>
-                        <Route path="user-roles" element={<ProcurementAdminSettingsAdminUsers />}>
+                        <Route path="user-roles" element={<ProcurementAdminSettingsUserRoles />}>
                             <Route index element={<UnderlinedNav navigationElements={procurementAdminSettingsUnderlinedNavigations}/>} />
                         </Route>
                         <Route path="user-permissions" element={<ProcurementAdminSettingsAdminUsers />}>
