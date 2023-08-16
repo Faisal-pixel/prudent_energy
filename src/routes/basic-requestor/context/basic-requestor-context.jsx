@@ -903,11 +903,10 @@ const BASIC_REQUESTOR_INITIAL_STATE = {
     
 }
 
-const BASIC_REQUESTOR_ACTION_TYPES = {
-}
+// const BASIC_REQUESTOR_ACTION_TYPES = {
+// }
 
 const basicRequestorReducer = (state, action) => {
-    const {type, payload} = action;
     
     return state;
 }

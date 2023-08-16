@@ -9,8 +9,11 @@ export const ProcurementAdminContext = createContext({
     // *********************************All table Columns {Headers} ******************************************** //
     procurementAdminRequisitionsColumns: [],
     procurementAdminAdminUsersColumns: [],
+    procurementAdminAdminUsersData: [],
     procurementAdminUserRolesColumns: [],
     procurementAdminUserRolesData: [],
+    procurementAdminUserPermissionsColumns: [],
+    procurementAdminUserPermissionsData: [],
     procurementAdminPurchaseContractsColumns: [],
     procurementAdminNominatedBiddersColumns: [],
 
@@ -69,7 +72,7 @@ export const PROCUREMENT_ADMIN_INITIAL_STATE = {
         {
             id: 1,
             navigationName: "Admin Users",
-            path: "/procurement-admin/settings/admin-users"
+            path: "/procurement-admin/settings"
         },
         {
             id: 2,
@@ -163,6 +166,24 @@ export const PROCUREMENT_ADMIN_INITIAL_STATE = {
         {
             Header: "User Type",
             accessor: "userType",
+        },
+    ],
+    procurementAdminUserPermissionsColumns: [
+        {
+            Header: "Pages",
+            accessor: "pages",
+        },
+        {
+            Header: "Read Permission",
+            accessor: "readPermission",
+        },
+        {
+            Header: "Insert Permission",
+            accessor: "insertPermission",
+        },
+        {
+            Header: "Modify Permission",
+            accessor: "modifyPermission",
         },
     ],
     procurementAdminPurchaseContractsColumns: [
@@ -351,6 +372,44 @@ export const PROCUREMENT_ADMIN_INITIAL_STATE = {
             roleID: "Supervisor",
             roleDescription: "To review",
             userType: "Vendor"
+        },
+    ],
+    procurementAdminUserPermissionsData: [
+        {
+            pages: "Request for Quote",
+            readPermission: "Yes",
+            insertPermission: "No",
+            modifyPermission: "No"
+        },
+        {
+            pages: "Purchase Order",
+            readPermission: "Yes",
+            insertPermission: "No",
+            modifyPermission: "No"
+        },
+        {
+            pages: "Waybill",
+            readPermission: "Yes",
+            insertPermission: "No",
+            modifyPermission: "No"
+        },
+        {
+            pages: "Invoice",
+            readPermission: "Yes",
+            insertPermission: "No",
+            modifyPermission: "No"
+        },
+        {
+            pages: "Issue Resolution",
+            readPermission: "Yes",
+            insertPermission: "Indirect",
+            modifyPermission: "No"
+        },
+        {
+            pages: "Issue Resolution",
+            readPermission: "Yes",
+            insertPermission: "No",
+            modifyPermission: "No"
         },
     ],
     procurementAdminRequestForQuotesMyRequisitionsData: [
@@ -810,8 +869,8 @@ export const ProcurementAdminProvider = ({children}) => {
     
     
     const [state] = useReducer(procurementAdminReducer, PROCUREMENT_ADMIN_INITIAL_STATE);
-    const {procurementAdminNavigations, procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts} = state;
-    const value = {procurementAdminNavigations,procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts}
+    const {procurementAdminNavigations, procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts} = state;
+    const value = {procurementAdminNavigations,procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts}
 
     return <ProcurementAdminContext.Provider value={value}>{children}</ProcurementAdminContext.Provider>
 }

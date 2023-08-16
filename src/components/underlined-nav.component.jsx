@@ -1,7 +1,7 @@
 
 import { Link, useLocation } from "react-router-dom";
 
-const UnderlinedNav = ({navigationElements, includeButton}) => {
+const UnderlinedNav = ({navigationElements, includeButton, handleButtonClick}) => {
     const location = useLocation();
     return <>
         <div className="border-b-2 border-greyDark flex justify-between max-w-full overflow-x-auto">
@@ -15,7 +15,7 @@ const UnderlinedNav = ({navigationElements, includeButton}) => {
             {
                 includeButton &&
                 <div className="flex">
-                    <button type="button" className="border self-end border-primaryBlue bg-primaryBlue rounded text-white px-4 py-1 hover:bg-white hover:text-primaryBlue">{includeButton}</button>
+                    <button type="button" onClick={handleButtonClick} className="border self-end border-primaryBlue bg-primaryBlue rounded text-white px-4 py-1 hover:bg-white hover:text-primaryBlue">{includeButton}</button>
                 </div> 
             }
         </div>

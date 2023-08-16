@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import ReactTable from "../../../components/react-table.component";
 import { useContext } from "react";
 import { ProcurementAdminContext } from "../context/procurement-admin.context";
+import {ReactComponent as AddButtonSVG} from "../../../assets/add-button-in-user-roles.svg"
 
 const ProcurementAdminSettingsUserRoles = () => {
     const {procurementAdminUserRolesColumns, procurementAdminUserRolesData} = useContext(ProcurementAdminContext);
@@ -12,7 +13,9 @@ const ProcurementAdminSettingsUserRoles = () => {
             </div>
 
             <Outlet />
-
+            <div className="flex justify-end">
+                <AddButtonSVG />
+            </div>
             <div className="bg-white px-3 py-4">
                 
                 <ReactTable columns={procurementAdminUserRolesColumns} data={procurementAdminUserRolesData}/>
