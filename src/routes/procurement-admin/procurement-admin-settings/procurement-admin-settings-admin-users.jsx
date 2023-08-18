@@ -4,6 +4,7 @@ import { ProcurementAdminContext } from "../context/procurement-admin.context";
 import UnderlinedNav from "../../../components/underlined-nav.component";
 import Modal from "../../../components/modal";
 import {ReactComponent as XButtonSVG} from "../../../assets/x-button-icon.svg";
+import Greetings from "../../../components/greetings.component";
 const ProcurementAdminSettingsAdminUsers = () => {
     const {procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminSettingsUnderlinedNavigations} = useContext(ProcurementAdminContext);
     const [addNewUserModalIsOpen, setAddNewUserModalIsOpen] = useState(false);
@@ -62,7 +63,7 @@ const ProcurementAdminSettingsAdminUsers = () => {
         </Modal>
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className="flex justify-between">
-                <p className="text-greyDark"><span className="font-bold text-black">Hey John -</span> We were just about to start the party without you. Welcome back, buddy!</p>
+                <Greetings />
             </div>
 
             <UnderlinedNav navigationElements={procurementAdminSettingsUnderlinedNavigations} includeButton={"Add new user"} handleButtonClick={handleAddNewUserModal}/>

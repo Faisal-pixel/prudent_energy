@@ -3,13 +3,14 @@ import ReactTable from "../../../components/react-table.component";
 import { useContext } from "react";
 import { ProcurementAdminContext } from "../context/procurement-admin.context";
 import {ReactComponent as AddButtonSVG} from "../../../assets/add-button-in-user-roles.svg"
+import Greetings from "../../../components/greetings.component";
 
 const ProcurementAdminSettingsUserRoles = () => {
     const {procurementAdminUserRolesColumns, procurementAdminUserRolesData} = useContext(ProcurementAdminContext);
     return <>
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className="flex justify-between">
-                <p className="text-greyDark"><span className="font-bold text-black">Hey John -</span> We were just about to start the party without you. Welcome back, buddy!</p>
+                <Greetings />
             </div>
 
             <Outlet />

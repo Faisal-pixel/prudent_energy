@@ -3,12 +3,13 @@ import {ReactComponent as PurchaseOrderImageSVG} from "../../../assets/purchase-
 import {ReactComponent as UploadIconSVG} from "../../../assets/upload-icon.svg";
 import UploadedFilePurchaseContracts from "../../../components/uploaded-file-purchase-contracts.component";
 import { BidderContext } from "../context/bidder.context";
+import Greetings from "../../../components/greetings.component";
 const BidderPurchaseContractsDetails = () => {
     const {uploadedFilesPurchaseContracts} = useContext(BidderContext)
     return (
         <div className="container bg-secondaryBackground space-y-5 px-6 pt-6">
             <div className="">
-                <p className="text-greyDark"><span className="font-bold text-black">Hey John -</span> We were just about to start the party without you. Welcome back, buddy!</p>
+                <Greetings />
             </div>
             <div className="space-x-3">
                 <a href="#" className="px-2 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Download Digital Signature</a>

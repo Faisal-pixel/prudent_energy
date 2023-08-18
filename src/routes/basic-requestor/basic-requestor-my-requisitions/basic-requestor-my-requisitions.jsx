@@ -4,12 +4,13 @@ import ActivityStatus from "../../../components/activity-status.component";
 import ReactTable from "../../../components/react-table.component";
 import { BasicRequestorContext } from "../context/basic-requestor-context";
 import { Link } from "react-router-dom";
+import Greetings from "../../../components/greetings.component";
 const BasicRequestorMyRecentRequisitions = () => {
     const { basicRequestorActivityStatusData, basicRequestorMyRecentRequisitionsColumns, basicRequestorMyRecentRequisitionsData } = useContext(BasicRequestorContext);
     return (
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className=" flex  justify-between">
-                <p className="text-greyDark"><span className="font-bold text-black">Hey John -</span> We were just about to start the party without you. Welcome back, buddy!</p>
+                <Greetings />
                 <Link to="create-new-rfq" className="text-white px-4 py-1 rounded border border-primaryBlue bg-primaryBlue hover:text-primaryBlue hover:bg-white">Create New RFQ</Link>
             </div>
 

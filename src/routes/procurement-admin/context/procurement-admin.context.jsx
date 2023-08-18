@@ -14,11 +14,13 @@ export const ProcurementAdminContext = createContext({
     procurementAdminUserRolesData: [],
     procurementAdminUserPermissionsColumns: [],
     procurementAdminUserPermissionsData: [],
+    procurementAdminBiddersColumn: [],
+    
     procurementAdminPurchaseContractsColumns: [],
     procurementAdminNominatedBiddersColumns: [],
 
     // *********************************All table Data {table body} ******************************************** //
-
+    procurementAdminBiddersData: [],
     procurementAdminDashboardRecentRequisitionsData: [],
     procurementAdminRequestForQuotesMyRequisitionsData: [],
     procurementAdminRequestForQuotesTeamRequisitionsData: [],
@@ -184,6 +186,28 @@ export const PROCUREMENT_ADMIN_INITIAL_STATE = {
         {
             Header: "Modify Permission",
             accessor: "modifyPermission",
+        },
+    ],
+    procurementAdminBiddersColumn: [
+        {
+            Header: "Bidder Number",
+            accessor: "bidderNumber"
+        },
+        {
+            Header: "Company Name",
+            accessor: "companyName"
+        },
+        {
+            Header: "Company Email",
+            accessor: "companyEmail"
+        },
+        {
+            Header: "Company Phone Number",
+            accessor: "companyPhoneNumber"
+        },
+        {
+            Header: "Company Address",
+            accessor: "companyAddress"
         },
     ],
     procurementAdminPurchaseContractsColumns: [
@@ -410,6 +434,50 @@ export const PROCUREMENT_ADMIN_INITIAL_STATE = {
             readPermission: "Yes",
             insertPermission: "No",
             modifyPermission: "No"
+        },
+    ],
+    procurementAdminBiddersData: [
+        {
+            bidderNumber: "PE0001",
+            companyName: "XYZ Corporations",
+            companyEmail: "xyzCorporation@gmail.com",
+            companyPhoneNumber: "08022568794",
+            companyAddress: "Lekki, Lagos"
+        },
+        {
+            bidderNumber: "PE0002",
+            companyName: "Nigeria Limited",
+            companyEmail: "NigeriaLimited@gmail.com",
+            companyPhoneNumber: "08022568794",
+            companyAddress: "Ikeja, Lagos"
+        },
+        {
+            bidderNumber: "PE0003",
+            companyName: "Sigma Holdings",
+            companyEmail: "sigmaholdings@gmail.com",
+            companyPhoneNumber: "08022568794",
+            companyAddress: "Ajah, Lagos"
+        },
+        {
+            bidderNumber: "PE0001",
+            companyName: "XYZ Corporations",
+            companyEmail: "xyzCorporation@gmail.com",
+            companyPhoneNumber: "08022568794",
+            companyAddress: "Lekki, Lagos"
+        },
+        {
+            bidderNumber: "PE0001",
+            companyName: "XYZ Corporations",
+            companyEmail: "xyzCorporation@gmail.com",
+            companyPhoneNumber: "08022568794",
+            companyAddress: "Lekki, Lagos"
+        },
+        {
+            bidderNumber: "PE0001",
+            companyName: "XYZ Corporations",
+            companyEmail: "xyzCorporation@gmail.com",
+            companyPhoneNumber: "08022568794",
+            companyAddress: "Lekki, Lagos"
         },
     ],
     procurementAdminRequestForQuotesMyRequisitionsData: [
@@ -869,8 +937,8 @@ export const ProcurementAdminProvider = ({children}) => {
     
     
     const [state] = useReducer(procurementAdminReducer, PROCUREMENT_ADMIN_INITIAL_STATE);
-    const {procurementAdminNavigations, procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts} = state;
-    const value = {procurementAdminNavigations,procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts}
+    const {procurementAdminNavigations, procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminBiddersColumn, procurementAdminBiddersData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts} = state;
+    const value = {procurementAdminNavigations,procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminBiddersColumn, procurementAdminBiddersData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts}
 
     return <ProcurementAdminContext.Provider value={value}>{children}</ProcurementAdminContext.Provider>
 }

@@ -3,6 +3,7 @@ import { BidderContext } from "../context/bidder.context";
 import ReactTable from "../../../components/react-table.component";
 
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
+import Greetings from "../../../components/greetings.component";
 
 const BidderRFQ = () => {
     const [searchInput, setSearchInput] = useState("")
@@ -18,7 +19,7 @@ const BidderRFQ = () => {
     return <>
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className="">
-                <p className="text-greyDark"><span className="font-bold text-black">Hey John -</span> We were just about to start the party without you. Welcome back, buddy!</p>
+                <Greetings />
             </div>
 
             <div className="bg-white px-3 py-4">

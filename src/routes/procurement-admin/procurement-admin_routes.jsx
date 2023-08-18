@@ -9,6 +9,7 @@ import UnderlinedNav from "../../components/underlined-nav.component";
 import ProcurementAdminSettingsAdminUsers from "./procurement-admin-settings/procurement-admin-settings-admin-users";
 import ProcurementAdminSettingsUserRoles from "./procurement-admin-settings/procurement-admin-settings-user-roles";
 import ProcurementAdminSettingsUserPermissions from "./procurement-admin-settings/procurement-admin-settings-user-permissions";
+import ProcurementAdminBidders from "./procurement-admin-bidders/procurement-admin-bidders";
 
 
 const ProcurementAdminRoutes = () => {
@@ -31,6 +32,7 @@ const ProcurementAdminRoutes = () => {
                             <Route index element={<UnderlinedNav navigationElements={procurementAdminSettingsUnderlinedNavigations}/>} />
                         </Route>
                     </Route>
+                    <Route path="bidders" element={<ProcurementAdminBidders />}/>
                     <Route path="request-for-quotes">
                         <Route index />
                         <Route path="details/:rfqNo" />
