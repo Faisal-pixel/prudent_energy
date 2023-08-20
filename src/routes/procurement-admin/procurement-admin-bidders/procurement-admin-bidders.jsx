@@ -7,6 +7,9 @@ import { ProcurementAdminContext } from "../context/procurement-admin.context";
 import ReactTable from "../../../components/react-table.component";
 import Modal from "../../../components/modal";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faToggleOff, faToggleOn } from "@fortawesome/free-solid-svg-icons";
+
 const ProcurementAdminBidders = () => {
     const {procurementAdminBiddersColumn, procurementAdminBiddersData} = useContext(ProcurementAdminContext)
     const [createNewBidderFormValues, setCreateNewBidderFormValues] = useState({
@@ -50,6 +53,12 @@ const ProcurementAdminBidders = () => {
         const {name, value} = e.target;
         setCreateNewBidderFormValues((prevState) => (
             {...prevState, [section]: {...prevState[section], [name]: value}}
+        ))
+    }
+    const handleToggleOnClick = (e, section) => {
+        const name = e.currentTarget.getAttribute("data-icon-name");
+        setCreateNewBidderFormValues((prevState) => (
+            {...prevState, [section]: {...prevState[section], [name]: !prevState.serviceCategories[name]}}
         ))
     }
     console.log(createNewBidderFormValues)
@@ -136,6 +145,29 @@ const ProcurementAdminBidders = () => {
                                     <option value="select" disabled>Select</option>
                                     <option></option>
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="border border-[#E8E8E8] rounded">
+                    <h3 className="px-3 py-2 bg-[#E8E8E8] font-bold text-lg">Service Categories</h3>
+                    <div className="px-3 py-2">
+                        <div className="flex space-x-4">
+                            <div className="space-x-2 flex basis-1/2">
+                                <label className="min-w-max self-center">Service Class: </label>
+                                <select defaultValue="select" name="serviceClass" onChange={(e) => handleOnChange(e, "serviceCategories")}  className="border border-grey[#E8E8E8] rounded-md px-2 py-1 w-full text-greyDark">
+                                    <option value="select" className="text-greyDark" disabled>Select</option>
+                                    <option value="legal" className="text-greyDark">Legal</option>
+                                    <option value="esg" className="text-greyDark">ESG</option>
+                                    <option value="technical" className="text-greyDark">Technical</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="flex space-x-4 pl-3">
+                            <div className="space-x-4 flex basis-1/2">
+                                <label className="">Insurance</label>
+                                <span>- - - - - - - - -</span>
+                                <FontAwesomeIcon data-icon-name="insurance" icon={createNewBidderFormValues.serviceCategories.insurance ? faToggleOn : faToggleOff} onClick={(e) => handleToggleOnClick(e, "serviceCategories")} className="self-center text-2xl text-[#227CBF] cursor-pointer"/>
                             </div>
                         </div>
                     </div>
