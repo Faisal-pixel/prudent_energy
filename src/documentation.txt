@@ -1,0 +1,44 @@
+# Bug: Figuring out how to add the toggle button in the Create New Bidder form under the service categories, and also updating it in the state.
+# Solution: So I installed all fontawesome dependies and imported them. I also increased using tailwind "text". To update the state I gave the icon a data-icon-name attribute and set it to the name it represent in the state. For instance "data-icon-name="insurance". Since their initial value is a boolean and it is set to false, I used that to check for whether the toggle is on or off using ternary operation. The fontawesome icon has two state, faToggleOn and faToggleOff. Then I created a helper function handleToggleOnClick(e, "serviceCategories") which receives the event and then the category in the form. Did this because of the way my state is structured.
+  Here is the structure of my state:
+    const [createNewBidderFormValues, setCreateNewBidderFormValues] = useState({
+        general: {
+            bidderNumber: "",
+            name: "",
+            lastDateModified: "",
+            status: ""
+        },
+        addressAndContact: {
+            address1: "",
+            address2: "",
+            city: "",
+            contactPersonName: "",
+            phoneNumber: "",
+            email: "",
+        },
+        payment: {
+            tinNumber: "",
+            paymentTermCode: "",
+        },
+        serviceCategories: {
+            serviceClass: "",
+            insurance: false,
+            freight: false,
+            agency: false,
+            storage: false
+        }
+
+    });
+    Here is the helper function and how it updates the state:
+        const handleToggleOnClick = (e, section) => {
+        const name = e.currentTarget.getAttribute("data-icon-name");
+        setCreateNewBidderFormValues((prevState) => (
+            {...prevState, [section]: {...prevState[section], [name]: !prevState.serviceCategories[name]}}
+        ))
+    }
+    So basically, it gets the name of the toggle from the data-icon-name value by using e.currentTarget.getAttribute, and then using setCreateNewBidderFormValues;
+    it makes use of the prevState useState hook provides us and then returns an object, spreading the prevState, then using the selection we pass in earlier,
+    I use it to select which category I want to update, which is the serviceCategories, and then spread back in the prevState of this category while using the name i got to select which
+    key in the serviceCategories I want to update and then set it to always be the opposite vale of the previous state
+# Date: [21/08/2023]
+# Developer: [Adams Faisal Omokugbo]

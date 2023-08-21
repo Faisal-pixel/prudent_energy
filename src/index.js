@@ -7,18 +7,21 @@ import { BrowserRouter } from 'react-router-dom';
 import { BidderProvider } from './routes/bidder/context/bidder.context';
 import { BasicRequestorProvider } from './routes/basic-requestor/context/basic-requestor-context';
 import { ProcurementAdminProvider } from './routes/procurement-admin/context/procurement-admin.context';
+import { ComponentContextProvider } from './components/component-context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <BasicRequestorProvider>
-        <BidderProvider>
-          <ProcurementAdminProvider>
-            <App />
-          </ProcurementAdminProvider>
-        </BidderProvider>
-      </BasicRequestorProvider>
+      <ComponentContextProvider>
+        <BasicRequestorProvider>
+          <BidderProvider>
+            <ProcurementAdminProvider>
+              <App />
+            </ProcurementAdminProvider>
+          </BidderProvider>
+        </BasicRequestorProvider>
+      </ComponentContextProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
