@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 export const ProcurementAdminContext = createContext({
     procurementAdminNavigations:  [],
     procurementAdminSettingsUnderlinedNavigations:  [],
+    procurementAdminRequestForQuotesUnderlinedNavigations:  [],
 
     procurementAdminActivityStatusData: [],
 
@@ -85,6 +86,24 @@ export const PROCUREMENT_ADMIN_INITIAL_STATE = {
             id: 3,
             navigationName: "User Permissions",
             path: "/procurement-admin/settings/user-permissions"
+        },
+    ],
+
+    procurementAdminRequestForQuotesUnderlinedNavigations:  [
+        {
+            id: 1,
+            navigationName: "My Requisitions",
+            path: "/procurement-admin/request-for-quotes"
+        },
+        {
+            id: 2,
+            navigationName: "Team Requisitions",
+            path: "/procurement-admin/request-for-quotes/team-Requisitions"
+        },
+        {
+            id: 3,
+            navigationName: "Other Requisitions",
+            path: "/procurement-admin/request-for-quotes/other-requisitions"
         },
     ],
 
@@ -937,8 +956,8 @@ export const ProcurementAdminProvider = ({children}) => {
     
     
     const [state] = useReducer(procurementAdminReducer, PROCUREMENT_ADMIN_INITIAL_STATE);
-    const {procurementAdminNavigations, procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminBiddersColumn, procurementAdminBiddersData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts} = state;
-    const value = {procurementAdminNavigations,procurementAdminSettingsUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminBiddersColumn, procurementAdminBiddersData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts}
+    const {procurementAdminNavigations, procurementAdminSettingsUnderlinedNavigations, procurementAdminRequestForQuotesUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminBiddersColumn, procurementAdminBiddersData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts} = state;
+    const value = {procurementAdminNavigations,procurementAdminSettingsUnderlinedNavigations, procurementAdminRequestForQuotesUnderlinedNavigations, procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminUserRolesColumns, procurementAdminUserRolesData, procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData, procurementAdminBiddersColumn, procurementAdminBiddersData, procurementAdminDashboardRecentRequisitionsData, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData, procurementAdminNominatedBiddersColumns, procurementAdminDashboardRecentRequisitionsNominatedBiddersData, procurementAdminMyRequisitionsNominatedBiddersData, procurementAdminTeamRequisitionsNominatedBiddersData, procurementAdminOtherRequisitionsNominatedBiddersData, uploadedFilesPurchaseContracts}
 
     return <ProcurementAdminContext.Provider value={value}>{children}</ProcurementAdminContext.Provider>
 }

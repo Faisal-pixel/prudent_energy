@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import {ReactComponent as BreadCrumbRightNavigationSVG} from "../../../assets/bread-crumb-right-navigation.svg" 
+import {ReactComponent as BreadCrumbRightNavigationSVG} from "../../../assets/bread-crumb-right-navigation.svg"
 import {ReactComponent as ToggleOpenIcon} from "../../../assets/toggle-point-up-open.svg" 
 import {ReactComponent as UploadCloudIcon} from "../../../assets/upload-cloud-icon.svg" 
 import { useCallback, useContext, useMemo, useState } from "react";

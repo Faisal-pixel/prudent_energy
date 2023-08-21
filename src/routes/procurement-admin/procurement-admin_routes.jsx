@@ -10,6 +10,8 @@ import ProcurementAdminSettingsAdminUsers from "./procurement-admin-settings/pro
 import ProcurementAdminSettingsUserRoles from "./procurement-admin-settings/procurement-admin-settings-user-roles";
 import ProcurementAdminSettingsUserPermissions from "./procurement-admin-settings/procurement-admin-settings-user-permissions";
 import ProcurementAdminBidders from "./procurement-admin-bidders/procurement-admin-bidders";
+import ProcurementAdminRequestForQuotes from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes";
+import ProcurementAdminRequestForQuotesDetails from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-details";
 
 
 const ProcurementAdminRoutes = () => {
@@ -34,8 +36,8 @@ const ProcurementAdminRoutes = () => {
                     </Route>
                     <Route path="bidders" element={<ProcurementAdminBidders />}/>
                     <Route path="request-for-quotes">
-                        <Route index />
-                        <Route path="details/:rfqNo" />
+                        <Route index element={<ProcurementAdminRequestForQuotes />}/>
+                        <Route path="my-requisitions/details/:rfqNo" element={<ProcurementAdminRequestForQuotesDetails />}/>
                     </Route>
                     <Route path="purchase-contracts">
                         <Route index />
