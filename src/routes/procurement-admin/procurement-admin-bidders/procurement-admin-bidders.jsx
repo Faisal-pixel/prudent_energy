@@ -20,6 +20,10 @@ const ProcurementAdminBidders = () => {
         const searchInput = e.target.value;
         setSearchInput(searchInput);
     }
+
+    const filteredPurchaseContractsData = procurementAdminBiddersData.filter((data) => (
+        data.bidderNumber.toLowerCase().includes(searchInput.toLowerCase()) || data.companyName.toLowerCase().includes(searchInput.toLowerCase())  || data.companyEmail.toLowerCase().includes(searchInput.toLowerCase()) || data.companyPhoneNumber.toLowerCase().includes(searchInput.toLowerCase()) || data.companyAddress.toLowerCase().includes(searchInput.toLowerCase())
+    ))
     return <>
         <CreateNewBidderForm />
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
@@ -38,7 +42,7 @@ const ProcurementAdminBidders = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={procurementAdminBiddersColumn} data={procurementAdminBiddersData}/>
+                <ReactTable columns={procurementAdminBiddersColumn} data={filteredPurchaseContractsData}/>
             </div>
             
         </div>
