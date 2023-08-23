@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import {ReactComponent as BreadCrumbRightNavigationSVG} from "../../../assets/bread-crumb-right-navigation.svg"
 import GeneralTemplate from "../../../components/GeneralTemplateComponent";
+import LegalTemplateDataSheet from "../../../components/LegalTemplateDatasheet.component";
+import ESGTemplateDataSheet from "../../../components/ESGTemplateDatasheet.component";
+import TechnicalTemplateDataSheet from "../../../components/technical-template-datasheet.component";
 const ProcurementAdminRequestForQuotesDetails = () => {
     const navigate = useNavigate();
     const handleClick = () => {
@@ -25,6 +28,9 @@ const ProcurementAdminRequestForQuotesDetails = () => {
             </div>
             {/* General Toggle */}
             <GeneralTemplate />
+            <LegalTemplateDataSheet />
+            <ESGTemplateDataSheet />
+            <TechnicalTemplateDataSheet />
         </div>
     </>
 }
