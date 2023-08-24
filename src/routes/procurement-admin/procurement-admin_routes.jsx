@@ -16,6 +16,7 @@ import ProcurementAdminRequestForQuotesTeamRequisitions from "./procurement-admi
 import ProcurementAdminRequestForQuotesTeamRequisitionsDetails from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-team-requisitions-details";
 import ProcurementAdminRequestForQuotesOtherRequisitions from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-other-requisitions";
 import ProcurementAdminRequestForQuotesOtherRequisitionsDetails from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-other-requisitions-details";
+import ProcurementAdminCreateNewRFQ from "./procurement-admin-create-new-rfq/procurement-admin-create-new-rfq";
 
 
 const ProcurementAdminRoutes = () => {
@@ -41,6 +42,7 @@ const ProcurementAdminRoutes = () => {
                     <Route path="bidders" element={<ProcurementAdminBidders />}/>
                     <Route path="/request-for-quotes">
                         <Route index element={<ProcurementAdminRequestForQuotes />}/>
+                        <Route path="create-new-rfq" element={<ProcurementAdminCreateNewRFQ />}/>
                         <Route path="my-requisitions/details/:rfqNo" element={<ProcurementAdminRequestForQuotesDetails />}/>
                         <Route path="team-requisitions">
                             <Route index element={<ProcurementAdminRequestForQuotesTeamRequisitions />}/>

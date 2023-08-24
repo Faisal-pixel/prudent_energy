@@ -1,0 +1,37 @@
+import { useNavigate } from "react-router-dom"
+import {ReactComponent as BreadCrumbRightNavigationSVG} from "../assets/bread-crumb-right-navigation.svg";
+import GeneralTemplateCreateNewRFQ from "./GeneralTemplateComponentCreateNewRFQ";
+import LegalTemplateDataSheetCreateNewRFQ from "./LegalTemplateDatasheetCreateNewRFQ.component";
+import ESGTemplateDataSheetCreateNewRFQ from "./ESGTemplateDatasheetCreateNewRFQ.component";
+import TechnicalTemplateDataSheetCreateNewRFQ from "./technical-template-datasheet-create-new-rfq.component";
+const CreateNewRFQ = () => {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate(-1)
+    }
+    return <>
+        <div className="container h-full overflow-y-auto px-5 pt-6 pb-5 flex flex-col space-y-5">
+            {/* BreadCrumbsNavigation */}
+            <div className="flex space-x-3 text-sm">
+                <span onClick={handleClick} className="text-greyDark hover:cursor-pointer">Dashboard</span>
+                <span className="self-center text-greyDark"><BreadCrumbRightNavigationSVG /></span>
+                <span className="text-greyDark">My Requisitions</span>
+                <span className="self-center text-greyDark"><BreadCrumbRightNavigationSVG /></span>
+                <span className="text-primaryBlue">Requisition Details</span>
+            </div>
+
+            {/* Buttons */}
+            <div className="space-x-3">
+                <button type="button" className="px-7 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Save</button>
+                <button type="button" className="px-7 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Delete</button>
+            </div>
+            {/* General Toggle */}
+            <GeneralTemplateCreateNewRFQ />
+            <LegalTemplateDataSheetCreateNewRFQ />
+            <ESGTemplateDataSheetCreateNewRFQ />
+            <TechnicalTemplateDataSheetCreateNewRFQ />
+        </div>
+    </>
+}
+
+export default CreateNewRFQ;

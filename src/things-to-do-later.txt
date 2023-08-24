@@ -1,0 +1,4 @@
+# Issue: Figuring out how to add the toggle button in the Create New Bidder form under the service categories, and also updating it in the state.
+# Solution: Handle the form informations for legal, esg and technical
+# Date: [24/08/2023]
+# Developer: [Adams Faisal Omokugbo]
