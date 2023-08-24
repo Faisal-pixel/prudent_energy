@@ -10,51 +10,68 @@ const Test = () => {
 
     const handleSelectChange = (e) => {
         setSelectedValue(e.target.value)
+        setExpirationDate("00:00:00:00")
     }
 
+
+    const currentDate = new Date()
+    const currentDay = currentDate.getDate();
+    const currentHour = currentDate.getHours();
+
+    const futureDate = new Date(currentDate)
+    
+
+    const countDown = () => {
+        const countDownDate = new Date(futureDate).getTime();
+        const currentDateGetTime = new Date().getTime();
+        const gap = countDownDate - currentDateGetTime;
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
+        const day = hour * 24;
+
+        const countDownToExpirationDay = Math.floor(gap/day);
+        const countDownToExpirationHour = Math.floor((gap%day)/hour);
+        const countDownToExpirationMinute = Math.floor((gap%hour)/minute);
+        const countDownToExpirationSecond = Math.floor((gap%minute)/second);
+        setExpirationCountDown(`${countDownToExpirationDay.toString().length === 1 ? `0${countDownToExpirationDay}` : countDownToExpirationDay}:${countDownToExpirationHour.toString().length === 1 ? `0${countDownToExpirationHour}` : countDownToExpirationHour}:${countDownToExpirationMinute.toString().length === 1 ? `0${countDownToExpirationMinute}` : countDownToExpirationMinute}:${countDownToExpirationSecond.toString().length === 1 ? `0${countDownToExpirationSecond}` : countDownToExpirationSecond}`)
+    }
+
+
     useEffect(() => {
-        const currentDate = new Date();
-        const currentDay = currentDate.getDate();
-        const currentMonth = currentDate.getMonth();
-        const currentYear = currentDate.getFullYear();
-        const currentHour = currentDate.getHours();
-
-        const futureDate = new Date(currentDate)
-
         
         setExpirationDate(`${currentDate.getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`)
-
-        const calculateExpirationDate = (optionSelected) => {
-            if (optionSelected === "days") {
+        
+        if(inputValue !== "") {
+            if (selectedValue === "days") {
                 futureDate.setDate(currentDay + parseInt(inputValue))
                 setExpirationDate(`${futureDate.getDate()}/${futureDate.getMonth()}/${futureDate.getFullYear()}`)
-            } else if(optionSelected === "hours") {
-                setExpirationDate(`${futureDate.getDate()}/${futureDate.getMonth()}/${futureDate.getFullYear()}`)
-            }
-        }
-        const calculateExpirationTime = (optionSelected) => {
-            if(optionSelected === "hours") {
+                setExpirationTime(`${futureDate.getHours()}:${futureDate.getMinutes()}:${futureDate.getSeconds()} GMT+1`)
+                const interval = setInterval(() => {
+                    countDown(); // Call the countDown function every second
+                }, 1000);
+            
+                // Cleanup the interval when the component unmounts
+                return () => {
+                    clearInterval(interval);
+                };
+            } else if(selectedValue === "hours") {
                 futureDate.setHours(currentHour + parseInt(inputValue))
-                setExpirationTime(`${futureDate.getHours()}:${futureDate.getMinutes()}:${futureDate.getSeconds()} GMT+1`)
-            } else if(optionSelected === "days") {
-                setExpirationTime(`${futureDate.getHours()}:${futureDate.getMinutes()}:${futureDate.getSeconds()} GMT+1`)
+                setExpirationTime(`${futureDate.getHours()}:${futureDate.getMinutes()}:${futureDate.getSeconds()} GMT+1`);
+                setExpirationDate(`${futureDate.getDate()}/${futureDate.getMonth()}/${futureDate.getFullYear()}`)
+                const interval = setInterval(() => {
+                    countDown(); // Call the countDown function every second
+                }, 1000);
+            
+                // Cleanup the interval when the component unmounts
+                return () => {
+                    clearInterval(interval);
+                };
             }
         }
-        if(inputValue !== "") {
-            calculateExpirationDate(selectedValue);
-            const interval = setInterval(() => {
-                calculateExpirationTime(selectedValue);
-            }, 1)
-            
-            return () => {
-                clearInterval(interval);
-            }
-            
-            // countDown = new Date(`${countDownYear}`)
-        }
-    }, [ inputValue, selectedValue])
+    }, [ inputValue, selectedValue])   
 
-    
+
     return <>
         <input type="text" placeholder="Input number" value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
         <select value={selectedValue} onChange={handleSelectChange}>
