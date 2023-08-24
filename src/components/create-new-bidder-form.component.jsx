@@ -50,7 +50,6 @@ const CreateNewBidderForm = () => {
             {...prevState, [section]: {...prevState[section], [name]: !prevState.serviceCategories[name]}}
         ))
     }
-    console.log(createNewBidderFormValues)
 
     return (
         <Modal isOpen={createNewBidderModalIsOpen} onClose={setCreateNewBidderModalIsOpen} noPadding>

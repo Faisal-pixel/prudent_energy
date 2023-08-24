@@ -4,6 +4,7 @@ import BidderRoutes from "./routes/bidder/bidder_routes";
 import BasicRequestorRoutes from "./routes/basic-requestor/basic-requestor-routes";
 import ProcurementAdminRoutes from "./routes/procurement-admin/procurement-admin_routes";
 import Test from "./components/test";
+import ITAdminRoutes from "./routes/it-admin/it-admin_routes";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/bidder/*" element={<BidderRoutes />}/>
         <Route path="/basic-requestor/*" element={<BasicRequestorRoutes />}/>
         <Route path="/procurement-admin/*" element={<ProcurementAdminRoutes />}/>
+        <Route path="/it-admin/*" element={<ITAdminRoutes />}/>
       </Routes>
     </div>
   );

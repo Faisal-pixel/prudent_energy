@@ -17,6 +17,8 @@ import ProcurementAdminRequestForQuotesTeamRequisitionsDetails from "./procureme
 import ProcurementAdminRequestForQuotesOtherRequisitions from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-other-requisitions";
 import ProcurementAdminRequestForQuotesOtherRequisitionsDetails from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-other-requisitions-details";
 import ProcurementAdminCreateNewRFQ from "./procurement-admin-create-new-rfq/procurement-admin-create-new-rfq";
+import ProcurementAdminMyPurchaseContracts from "./procurement-admin-purchase-contracts/procurement-admin-purchase-contracts";
+import ProcurementAdminMyPurchaseContractsDetails from "./procurement-admin-purchase-contracts/procurement-admin-purchase-contracts-details";
 
 
 const ProcurementAdminRoutes = () => {
@@ -54,12 +56,10 @@ const ProcurementAdminRoutes = () => {
                         </Route>
                     </Route>
                     <Route path="purchase-contracts">
-                        <Route index />
-                        <Route path="details/:rfqNo" />
+                        <Route index element={<ProcurementAdminMyPurchaseContracts />}/>
+                        <Route path="details/:rfqNo" element={<ProcurementAdminMyPurchaseContractsDetails />}/>
                     </Route>
-                    <Route path="issue-resolution"/>
-                    <Route path="report"/>
-                    <Route path="profile"/>
+                    <Route path="purchase-documents"/>
                 </Route> 
             </Route>
         </Routes>

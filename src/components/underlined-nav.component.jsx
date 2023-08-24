@@ -7,7 +7,7 @@ const UnderlinedNav = ({navigationElements, includeButton, handleButtonClick}) =
             <div className="space-x-7">
                 {navigationElements.map(navigationElement => {
                     return (
-                        <NavLink key={navigationElement.id} to={navigationElement.path} activeClassName="border-b-4 border-primaryBlue text-primaryBlue" className={({ isActive }) =>
+                        <NavLink key={navigationElement.id} to={navigationElement.path} className={({ isActive }) =>
                         isActive ? "border-b-4 border-primaryBlue text-primaryBlue inline-block pb-4" : "text-greyDark inline-block pb-4"
                         } end> {navigationElement.navigationName}</NavLink>
                     )

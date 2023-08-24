@@ -2,12 +2,13 @@ import { useContext, useState, } from "react";
 import Greetings from "../../../components/greetings.component";
 import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
-import { ProcurementAdminContext } from "../context/procurement-admin.context";
-
+import { ITAdminContext } from "../context/it-admin.context";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
-const ProcurementAdminRequestForQuotesOtherRequisitions = () => {
-    const {procurementAdminRequestForQuotesUnderlinedNavigations, procurementAdminRequestForQuotesOtherRequisitionsData, procurementAdminRequisitionsColumns} = useContext(ProcurementAdminContext);
+
+const ITAdminRequestForQuotesTeamRequisitions = () => {
+    const {itAdminRequestForQuotesUnderlinedNavigations, itAdminRequestForQuotesTeamRequisitionsData, itAdminRequisitionsColumns} = useContext(ITAdminContext);
+
     const [searchInput, setSearchInput] = useState("")    
 
     const onSearchChange = (e) => {
@@ -15,7 +16,7 @@ const ProcurementAdminRequestForQuotesOtherRequisitions = () => {
         setSearchInput(searchInput);
     }
 
-    const filteredOtherRequisitionsData = procurementAdminRequestForQuotesOtherRequisitionsData.filter((data) => (
+    const filteredTeamRequisitionsData = itAdminRequestForQuotesTeamRequisitionsData.filter((data) => (
         data.rfqNo.toLowerCase().includes(searchInput.toLowerCase()) || data.description.toLowerCase().includes(searchInput.toLowerCase())  || data.expDateAndTime.toLowerCase().includes(searchInput.toLowerCase()) || data.status.toLowerCase().includes(searchInput.toLowerCase()) 
     ))
     return <>
@@ -23,7 +24,7 @@ const ProcurementAdminRequestForQuotesOtherRequisitions = () => {
             <div className="flex justify-between">
                 <Greetings />
             </div>
-            <UnderlinedNav navigationElements={procurementAdminRequestForQuotesUnderlinedNavigations} />
+            <UnderlinedNav navigationElements={itAdminRequestForQuotesUnderlinedNavigations} />
 
             <div className="bg-white px-3 py-4">
                 <div className="flex justify-between">
@@ -35,7 +36,7 @@ const ProcurementAdminRequestForQuotesOtherRequisitions = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={procurementAdminRequisitionsColumns} data={filteredOtherRequisitionsData} goTo={"details"}/>
+                <ReactTable columns={itAdminRequisitionsColumns} data={filteredTeamRequisitionsData} goTo={"details"}/>
             </div>
             
         </div>
@@ -43,4 +44,4 @@ const ProcurementAdminRequestForQuotesOtherRequisitions = () => {
     </>
 }
 
-export default ProcurementAdminRequestForQuotesOtherRequisitions;
+export default ITAdminRequestForQuotesTeamRequisitions;

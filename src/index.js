@@ -8,6 +8,7 @@ import { BidderProvider } from './routes/bidder/context/bidder.context';
 import { BasicRequestorProvider } from './routes/basic-requestor/context/basic-requestor-context';
 import { ProcurementAdminProvider } from './routes/procurement-admin/context/procurement-admin.context';
 import { ComponentContextProvider } from './components/component-context';
+import { ITAdminProvider } from './routes/it-admin/context/it-admin.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,7 +18,9 @@ root.render(
         <BasicRequestorProvider>
           <BidderProvider>
             <ProcurementAdminProvider>
-              <App />
+              <ITAdminProvider>
+                <App />
+              </ITAdminProvider>
             </ProcurementAdminProvider>
           </BidderProvider>
         </BasicRequestorProvider>
