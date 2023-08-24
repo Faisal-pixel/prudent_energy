@@ -6,16 +6,17 @@ import { ProcurementAdminContext } from "../context/procurement-admin.context";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
 
-const ProcurementAdminRequestForQuotes = () => {
-    const {procurementAdminRequestForQuotesUnderlinedNavigations, procurementAdminRequestForQuotesMyRequisitionsData, procurementAdminRequisitionsColumns} = useContext(ProcurementAdminContext);
-    const [searchInput, setSearchInput] = useState("");
+const ProcurementAdminRequestForQuotesTeamRequisitions = () => {
+    const {procurementAdminRequestForQuotesUnderlinedNavigations, procurementAdminRequestForQuotesTeamRequisitionsData, procurementAdminRequisitionsColumns} = useContext(ProcurementAdminContext);
+
+    const [searchInput, setSearchInput] = useState("")    
 
     const onSearchChange = (e) => {
         const searchInput = e.target.value;
         setSearchInput(searchInput);
     }
 
-    const filteredMyRequisitionsData = procurementAdminRequestForQuotesMyRequisitionsData.filter((data) => (
+    const filteredTeamRequisitionsData = procurementAdminRequestForQuotesTeamRequisitionsData.filter((data) => (
         data.rfqNo.toLowerCase().includes(searchInput.toLowerCase()) || data.description.toLowerCase().includes(searchInput.toLowerCase())  || data.expDateAndTime.toLowerCase().includes(searchInput.toLowerCase()) || data.status.toLowerCase().includes(searchInput.toLowerCase()) 
     ))
     return <>
@@ -23,8 +24,7 @@ const ProcurementAdminRequestForQuotes = () => {
             <div className="flex justify-between">
                 <Greetings />
             </div>
-
-            <UnderlinedNav navigationElements={procurementAdminRequestForQuotesUnderlinedNavigations} includeButton={"Create New RFQ"} />
+            <UnderlinedNav navigationElements={procurementAdminRequestForQuotesUnderlinedNavigations} />
 
             <div className="bg-white px-3 py-4">
                 <div className="flex justify-between">
@@ -36,7 +36,7 @@ const ProcurementAdminRequestForQuotes = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={procurementAdminRequisitionsColumns} data={filteredMyRequisitionsData} goTo={"my-requisitions/details"}/>
+                <ReactTable columns={procurementAdminRequisitionsColumns} data={filteredTeamRequisitionsData} goTo={"details"}/>
             </div>
             
         </div>
@@ -44,4 +44,4 @@ const ProcurementAdminRequestForQuotes = () => {
     </>
 }
 
-export default ProcurementAdminRequestForQuotes;
+export default ProcurementAdminRequestForQuotesTeamRequisitions;

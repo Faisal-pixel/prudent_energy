@@ -12,6 +12,10 @@ import ProcurementAdminSettingsUserPermissions from "./procurement-admin-setting
 import ProcurementAdminBidders from "./procurement-admin-bidders/procurement-admin-bidders";
 import ProcurementAdminRequestForQuotes from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes";
 import ProcurementAdminRequestForQuotesDetails from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-details";
+import ProcurementAdminRequestForQuotesTeamRequisitions from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-team-requisitions";
+import ProcurementAdminRequestForQuotesTeamRequisitionsDetails from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-team-requisitions-details";
+import ProcurementAdminRequestForQuotesOtherRequisitions from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-other-requisitions";
+import ProcurementAdminRequestForQuotesOtherRequisitionsDetails from "./procurement-admin-request-for-quotes/procurement-admin-request-for-quotes-other-requisitions-details";
 
 
 const ProcurementAdminRoutes = () => {
@@ -35,9 +39,17 @@ const ProcurementAdminRoutes = () => {
                         </Route>
                     </Route>
                     <Route path="bidders" element={<ProcurementAdminBidders />}/>
-                    <Route path="request-for-quotes">
+                    <Route path="/request-for-quotes">
                         <Route index element={<ProcurementAdminRequestForQuotes />}/>
                         <Route path="my-requisitions/details/:rfqNo" element={<ProcurementAdminRequestForQuotesDetails />}/>
+                        <Route path="team-requisitions">
+                            <Route index element={<ProcurementAdminRequestForQuotesTeamRequisitions />}/>
+                            <Route path="details/:rfqNo" element={<ProcurementAdminRequestForQuotesTeamRequisitionsDetails />}/>
+                        </Route>
+                        <Route path="other-requisitions">
+                            <Route index element={<ProcurementAdminRequestForQuotesOtherRequisitions />}/>
+                            <Route path="details/:rfqNo" element={<ProcurementAdminRequestForQuotesOtherRequisitionsDetails />}/>
+                        </Route>
                     </Route>
                     <Route path="purchase-contracts">
                         <Route index />

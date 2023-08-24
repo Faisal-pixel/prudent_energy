@@ -21,7 +21,7 @@ const ProcurementAdminBidders = () => {
         setSearchInput(searchInput);
     }
 
-    const filteredPurchaseContractsData = procurementAdminBiddersData.filter((data) => (
+    const filteredBiddersData = procurementAdminBiddersData.filter((data) => (
         data.bidderNumber.toLowerCase().includes(searchInput.toLowerCase()) || data.companyName.toLowerCase().includes(searchInput.toLowerCase())  || data.companyEmail.toLowerCase().includes(searchInput.toLowerCase()) || data.companyPhoneNumber.toLowerCase().includes(searchInput.toLowerCase()) || data.companyAddress.toLowerCase().includes(searchInput.toLowerCase())
     ))
     return <>
@@ -42,7 +42,7 @@ const ProcurementAdminBidders = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={procurementAdminBiddersColumn} data={filteredPurchaseContractsData}/>
+                <ReactTable columns={procurementAdminBiddersColumn} data={filteredBiddersData}/>
             </div>
             
         </div>

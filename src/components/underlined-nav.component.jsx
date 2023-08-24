@@ -1,14 +1,15 @@
 
-import { Link, useLocation } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const UnderlinedNav = ({navigationElements, includeButton, handleButtonClick}) => {
-    const location = useLocation();
     return <>
         <div className="border-b-2 border-greyDark flex justify-between max-w-full overflow-x-auto">
             <div className="space-x-7">
                 {navigationElements.map(navigationElement => {
                     return (
-                        <Link key={navigationElement.id} to={navigationElement.path} className={` ${navigationElement.path === location.pathname && "border-b-4 border-primaryBlue text-primaryBlue"} text-greyDark inline-block pb-4`}> {navigationElement.navigationName}</Link>
+                        <NavLink key={navigationElement.id} to={navigationElement.path} activeClassName="border-b-4 border-primaryBlue text-primaryBlue" className={({ isActive }) =>
+                        isActive ? "border-b-4 border-primaryBlue text-primaryBlue inline-block pb-4" : "text-greyDark inline-block pb-4"
+                        } end> {navigationElement.navigationName}</NavLink>
                     )
                 })}
             </div>
