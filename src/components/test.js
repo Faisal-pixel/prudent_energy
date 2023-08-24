@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Test = () => {
     const [expirationDate, setExpirationDate] = useState("");
-    const [expirationTime, setExpirationTime] = useState("");
+    const [expirationTime, setExpirationTime] = useState("00:00:00 GMT+1");
     const [expirationCountDown, setExpirationCountDown] = useState("00:00:00");
     const [inputValue, setInputValue] = useState("");
     const [selectedValue, setSelectedValue] = useState("select");
@@ -17,24 +17,40 @@ const Test = () => {
         const currentDay = currentDate.getDate();
         const currentMonth = currentDate.getMonth();
         const currentYear = currentDate.getFullYear();
+        const currentHour = currentDate.getHours();
 
         const futureDate = new Date(currentDate)
 
-        // const months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October"]
-        // let countDown;
-        // let countDownDate = currentDate.getDate();
-        // let countDownMonth = currentDate.getMonth();
-        // let countDownYear = currentDate.getFullYear();
+        
         setExpirationDate(`${currentDate.getDate()}/${currentDate.getMonth()}/${currentDate.getFullYear()}`)
-        setExpirationTime(`${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`)
-        // if(inputValue === "") return;
-        if(inputValue !== "" && selectedValue === "days") {
+
+        const calculateExpirationDate = (optionSelected) => {
+            if (optionSelected === "days") {
+                futureDate.setDate(currentDay + parseInt(inputValue))
+                setExpirationDate(`${futureDate.getDate()}/${futureDate.getMonth()}/${futureDate.getFullYear()}`)
+            } else if(optionSelected === "hours") {
+                setExpirationDate(`${futureDate.getDate()}/${futureDate.getMonth()}/${futureDate.getFullYear()}`)
+            }
+        }
+        const calculateExpirationTime = (optionSelected) => {
+            if(optionSelected === "hours") {
+                futureDate.setHours(currentHour + parseInt(inputValue))
+                setExpirationTime(`${futureDate.getHours()}:${futureDate.getMinutes()}:${futureDate.getSeconds()} GMT+1`)
+            } else if(optionSelected === "days") {
+                setExpirationTime(`${futureDate.getHours()}:${futureDate.getMinutes()}:${futureDate.getSeconds()} GMT+1`)
+            }
+        }
+        if(inputValue !== "") {
+            calculateExpirationDate(selectedValue);
+            const interval = setInterval(() => {
+                calculateExpirationTime(selectedValue);
+            }, 1)
             
-            futureDate.setDate(currentDay + parseInt(inputValue))
-            setExpirationDate(`${futureDate.getDate()}/${futureDate.getMonth()}/${futureDate.getFullYear()}`)
+            return () => {
+                clearInterval(interval);
+            }
+            
             // countDown = new Date(`${countDownYear}`)
-        } else if (inputValue !== "" && selectedValue === "hours") {
-            setExpirationTime(`${currentDate.getHours() + parseInt(inputValue)}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`)
         }
     }, [ inputValue, selectedValue])
 
