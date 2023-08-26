@@ -4,17 +4,17 @@ import ReactTable from "../../../components/react-table.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
 import SearchInputComponent from "../../../components/search-input.component";
 import Greetings from "../../../components/greetings.component";
-import { ProcurementAdminContext } from "../context/it-admin.context";
+import { FinanceAdminContext } from "../context/finance-admin.context";
 
 
-const ProcurementAdminMyPurchaseContracts = () => {
+const FinanceAdminMyPurchaseContracts = () => {
     const [searchInput, setSearchInput] = useState("")
-    const {procurementAdminPurchaseContractsColumns, procurementAdminPurchaseContractsData} = useContext(ProcurementAdminContext)
+    const {financeAdminPurchaseContractsColumns, financeAdminPurchaseContractsData} = useContext(FinanceAdminContext)
     const onSearchChange = (e) => {
         const searchInput = e.target.value;
         setSearchInput(searchInput);
     }
-    const filteredPurchaseContractsData = procurementAdminPurchaseContractsData.filter((bid) => (
+    const filteredPurchaseContractsData = financeAdminPurchaseContractsData.filter((bid) => (
         bid.contractNo.toLowerCase().includes(searchInput.toLowerCase()) || bid.description.toLowerCase().includes(searchInput.toLowerCase())  || bid.contractDateAndTime.toLowerCase().includes(searchInput.toLowerCase())
     ))
     
@@ -34,10 +34,10 @@ const ProcurementAdminMyPurchaseContracts = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={procurementAdminPurchaseContractsColumns} data={filteredPurchaseContractsData} goTo={"details"}/>
+                <ReactTable columns={financeAdminPurchaseContractsColumns} data={filteredPurchaseContractsData} goTo={"details"}/>
             </div>
         </div>
     </>
 }
 
-export default ProcurementAdminMyPurchaseContracts;
+export default FinanceAdminMyPurchaseContracts;

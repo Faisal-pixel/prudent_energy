@@ -5,6 +5,8 @@ import BasicRequestorRoutes from "./routes/basic-requestor/basic-requestor-route
 import ProcurementAdminRoutes from "./routes/procurement-admin/procurement-admin_routes";
 import Test from "./components/test";
 import ITAdminRoutes from "./routes/it-admin/it-admin_routes";
+import FinanceAdminRoutes from "./routes/finance-admin/finance-admin_routes";
+import ManagementRoutes from "./routes/management/management-admin_routes";
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path="/basic-requestor/*" element={<BasicRequestorRoutes />}/>
         <Route path="/procurement-admin/*" element={<ProcurementAdminRoutes />}/>
         <Route path="/it-admin/*" element={<ITAdminRoutes />}/>
+        <Route path="/finance-admin/*" element={<FinanceAdminRoutes />}/>
+        <Route path="/management/*" element={<ManagementRoutes />}/>
       </Routes>
     </div>
   );

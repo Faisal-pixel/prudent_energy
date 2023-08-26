@@ -5,11 +5,11 @@ import TopNavComponent from "../../components/top-nav.component";
 import { BasicRequestorContext } from "./context/basic-requestor-context";
 import BasicRequestorMyRecentRequisitions from "./basic-requestor-my-requisitions/basic-requestor-my-requisitions";
 import BasicRequestorMyRecentRequisitionsDetails from "./basic-requestor-my-requisitions/basic-requestor-my-requisitions-details";
-import CreateNewRfq from "./basic-requestor-my-requisitions/create-new-rfq";
 import BasicRequestorTeamRequisitions from "./basic-requestor-team-requisitions/basic-requestor-team-requisitions";
 import BasicRequestorTeamRequisitionsDetails from "./basic-requestor-team-requisitions/basic-requestor-team-requisitions-details";
 import BasicRequestorMyPurchaseContracts from "./basic-requestor-my-purchase-contracts/basic-requestor-my-purchase-contracts";
 import BasicRequestorMyPurchaseContractsDetails from "./basic-requestor-my-purchase-contracts/basic-requestor-my-purchase-contracts-details";
+import BasicRequestorCreateNewRFQ from "./basic-requestor-admin-create-new-rfq/basic-requestor-admin-create-new-rfq";
 
 const BasicRequestorRoutes = () => {
     const {basicRequestorNavigations} = useContext(BasicRequestorContext)
@@ -20,7 +20,7 @@ const BasicRequestorRoutes = () => {
                 <Route path="/" element={<TopNavComponent />}>
                     <Route path="my-requisitions">
                         <Route index  element={<BasicRequestorMyRecentRequisitions />}/>
-                        <Route path="create-new-rfq"  element={<CreateNewRfq />}/>
+                        <Route path="create-new-rfq"  element={<BasicRequestorCreateNewRFQ />}/>
                         <Route path="details/:rfqNo" element={<BasicRequestorMyRecentRequisitionsDetails />}/>
                     </Route>
                     <Route path="team-requisitions">

@@ -18,6 +18,8 @@ import ITAdminRequestForQuotesTeamRequisitions from "./it-admin-request-for-quot
 import ITAdminRequestForQuotesTeamRequisitionsDetails from "./it-admin-request-for-quotes/it-admin-request-for-quotes-team-requisitions-details";
 import ITAdminRequestForQuotesOtherRequisitions from "./it-admin-request-for-quotes/it-admin-request-for-quotes-other-requisitions";
 import ITAdminRequestForQuotesOtherRequisitionsDetails from "./it-admin-request-for-quotes/it-admin-request-for-quotes-other-requisitions-details";
+import ITAdminMyPurchaseContracts from "./it-admin-purchase-contracts/it-admin-purchase-contracts";
+import ITAdminMyPurchaseContractsDetails from "./it-admin-purchase-contracts/it-admin-purchase-contracts-details";
 
 
 const ITAdminRoutes = () => {
@@ -55,8 +57,8 @@ const ITAdminRoutes = () => {
                         </Route>
                     </Route>
                     <Route path="purchase-contracts">
-                        <Route index />
-                        <Route path="details/:rfqNo" />
+                        <Route index element=<ITAdminMyPurchaseContracts />/>
+                        <Route path="details/:rfqNo" element=<ITAdminMyPurchaseContractsDetails />/>
                     </Route>
                     <Route path="purchase-documents"/>
                 </Route> 

@@ -4,9 +4,9 @@ import {ReactComponent as UploadIconSVG} from "../../../assets/upload-icon.svg";
 import UploadedFilePurchaseContracts from "../../../components/uploaded-file-purchase-contracts.component";
 import { Link } from "react-router-dom";
 import Greetings from "../../../components/greetings.component";
-import { ITAdminContext, ProcurementAdminContext } from "../context/it-admin.context";
-const ITAdminMyPurchaseContractsDetails = () => {
-    const {uploadedFilesPurchaseContracts} = useContext(ITAdminContext)
+import { FinanceAdminContext } from "../context/finance-admin.context";
+const FinanceAdminMyPurchaseContractsDetails = () => {
+    const {uploadedFilesPurchaseContracts} = useContext(FinanceAdminContext)
     return (
         <div className="container bg-secondaryBackground space-y-5 px-6 pt-6">
             <div className="">
@@ -45,4 +45,4 @@ const ITAdminMyPurchaseContractsDetails = () => {
     )
 }
 
-export default ITAdminMyPurchaseContractsDetails;
+export default FinanceAdminMyPurchaseContractsDetails;

@@ -9,6 +9,8 @@ import { BasicRequestorProvider } from './routes/basic-requestor/context/basic-r
 import { ProcurementAdminProvider } from './routes/procurement-admin/context/procurement-admin.context';
 import { ComponentContextProvider } from './components/component-context';
 import { ITAdminProvider } from './routes/it-admin/context/it-admin.context';
+import { FinanceAdminProvider } from './routes/finance-admin/context/finance-admin.context';
+import { ManagementProvider } from './routes/management/context/management.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +21,11 @@ root.render(
           <BidderProvider>
             <ProcurementAdminProvider>
               <ITAdminProvider>
-                <App />
+                <FinanceAdminProvider>
+                  <ManagementProvider>
+                    <App />
+                  </ManagementProvider>
+                </FinanceAdminProvider>
               </ITAdminProvider>
             </ProcurementAdminProvider>
           </BidderProvider>
