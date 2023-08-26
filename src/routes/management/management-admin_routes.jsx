@@ -12,6 +12,8 @@ import ManagementRequestForQuotesOtherRequisitions from "./management-request-fo
 import ManagementRequestForQuotesTeamRequisitionsDetails from "./management-request-for-quotes/management-request-for-quotes-team-requisitions-details";
 import ManagementRequestForQuotesTeamRequisitions from "./management-request-for-quotes/management-request-for-quotes-team-requisitions";
 import ManagementRequestForQuotes from "./management-request-for-quotes/management-request-for-quotes";
+import ManagementMyPurchaseContractsDetails from "./management-purchase-contracts/management-purchase-contracts-details";
+import ManagementMyPurchaseContracts from "./management-purchase-contracts/management-purchase-contracts";
 
 
 const ManagementRoutes = () => {
@@ -40,8 +42,8 @@ const ManagementRoutes = () => {
                         </Route>
                     </Route>
                     <Route path="purchase-contracts">
-                        <Route index />
-                        <Route path="details/:rfqNo" />
+                        <Route index element={<ManagementMyPurchaseContracts />}/>
+                        <Route path="details/:rfqNo" element={<ManagementMyPurchaseContractsDetails />}/>
                     </Route>
                     <Route path="purchase-documents"/>
                 </Route> 

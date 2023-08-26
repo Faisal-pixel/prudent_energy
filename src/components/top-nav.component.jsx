@@ -8,13 +8,14 @@ import NotificationsParentComponent from "./notifications-parent.component";
 
 const TopNavComponent = () => {
     const [openNotification, setOpenNotification] = useState(false);
+    console.log(openNotification + "top-nav")
     const toggleNotificationBellClick = () => {
         setOpenNotification(!openNotification)
     }
     return (
         <>
             {
-                openNotification && <NotificationsParentComponent onClose={toggleNotificationBellClick}/>
+                openNotification && <NotificationsParentComponent onClose={toggleNotificationBellClick} isNotificationParentOpen={openNotification}/>
             }
             <div className="flex flex-col w-full mb-2 overflow-y-scroll bg-secondaryBackground">
                 <nav className="bg-white px-4 py-3 flex w-full justify-between shadow-sm">
