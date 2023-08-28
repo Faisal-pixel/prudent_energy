@@ -15,7 +15,7 @@ import { ManagementProvider } from './routes/management/context/management.conte
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/'>
       <ComponentContextProvider>
         <BasicRequestorProvider>
           <BidderProvider>
