@@ -9,6 +9,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+}
+
+
+.dx-datagrid-rowsview tr {
+  border-top: none !important;
+  border-bottom-width: 1px !important;
+  border-color: #808080 !important;
 }
 
 code {

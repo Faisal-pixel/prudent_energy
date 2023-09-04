@@ -15,11 +15,11 @@ const BidderPurchaseContractsDetails = () => {
                 <a href="#" className="px-2 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Download Digital Signature</a>
                 <a href="#" className="px-7 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Download Contract</a>
             </div>
-            <div className="flex space-x-3">
-                <div className="max-h-[35rem] basis-2/3 overflow-y-auto">
-                    <PurchaseOrderImageSVG />
+            <div className="flex flex-wrap xl:flex-nowrap space-x-3">
+                <div className="max-h-full xl:basis-2/3 basis-full overflow-y-auto">
+                    <PurchaseOrderImageSVG className="w-full"/>
                 </div>
-                <div className="container max-h-[35rem] px-3 basis-1/3 space-y-3 overflow-y-auto">
+                <div className="container max-h-full px-3 xl:basis-1/3 basis-full space-y-3 overflow-y-auto">
                     <div className="space-y-2">
                         <label>Comment Optional: </label>
                         <textarea className="w-full h-[15rem] resize-none border rounded p-2 focus:outline-none"></textarea>
@@ -35,7 +35,7 @@ const BidderPurchaseContractsDetails = () => {
                             <label htmlFor="fileInput" className="w-full hover:cursor-pointer flex items-center"><UploadIconSVG className="inline mr-2" />Upload supporting documents</label>
                         </div>
                         <div className="space-y-2">
-                            {uploadedFilesPurchaseContracts.map(({documentName, preview, size}) => <UploadedFilePurchaseContracts documentName={documentName} preview={preview} size={size}/> )}
+                            {uploadedFilesPurchaseContracts.map(({documentName, preview, size, id}) => <UploadedFilePurchaseContracts key={id} documentName={documentName} preview={preview} size={size}/> )}
                         </div>
                     </div>
                 </div>

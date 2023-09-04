@@ -1,3 +1,4 @@
+import 'devextreme/dist/css/dx.light.css';
 import { Route, Routes } from "react-router-dom";
 import LogInPage from "./routes/log-in-page";
 import BidderRoutes from "./routes/bidder/bidder_routes";
