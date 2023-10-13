@@ -14,12 +14,15 @@ import ManagementRequestForQuotesTeamRequisitions from "./management-request-for
 import ManagementRequestForQuotes from "./management-request-for-quotes/management-request-for-quotes";
 import ManagementMyPurchaseContractsDetails from "./management-purchase-contracts/management-purchase-contracts-details";
 import ManagementMyPurchaseContracts from "./management-purchase-contracts/management-purchase-contracts";
+import { Provider } from "react-redux";
+import { managementStore } from "../../store/management/management.store";
 
 
 const ManagementRoutes = () => {
     const {managementNavigations } = useContext(ManagementContext)
     return (
-        <Routes>
+        <Provider store={managementStore}>
+            <Routes>
             <Route path="/" element={<SideNavComponent navigationElements={managementNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
@@ -49,6 +52,7 @@ const ManagementRoutes = () => {
                 </Route> 
             </Route>
         </Routes>
+        </Provider>
     )
 }
 

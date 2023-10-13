@@ -18,7 +18,20 @@ body {
   border-bottom-width: 1px !important;
   border-color: #808080 !important;
 }
+.dx-htmleditor.dx-htmleditor-outlined {
+  border-top: none !important;
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
 
+.hide-overflowing-toolbars-items {
+  display: none !important;
+  transform: translateY(-100%);
+}
+.show-overflowing-toolbars-items {
+  display: inline-block !important;
+  transform: translateY(0);
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

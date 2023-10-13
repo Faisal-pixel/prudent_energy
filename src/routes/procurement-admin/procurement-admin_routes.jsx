@@ -5,7 +5,6 @@ import { ProcurementAdminContext } from "./context/procurement-admin.context";
 import TopNavComponent from "../../components/top-nav.component";
 import ProcurementAdminDashboard from "./procurement-admin-dashboard/procurement-admin-dashboard";
 import ProcurementAdminRecentRequisitionsDetails from "./procurement-admin-dashboard/procurement-admin-dashboard-details";
-import UnderlinedNav from "../../components/underlined-nav.component";
 import ProcurementAdminSettingsAdminUsers from "./procurement-admin-settings/procurement-admin-settings-admin-users";
 import ProcurementAdminSettingsUserRoles from "./procurement-admin-settings/procurement-admin-settings-user-roles";
 import ProcurementAdminSettingsUserPermissions from "./procurement-admin-settings/procurement-admin-settings-user-permissions";
@@ -19,12 +18,15 @@ import ProcurementAdminRequestForQuotesOtherRequisitionsDetails from "./procurem
 import ProcurementAdminCreateNewRFQ from "./procurement-admin-create-new-rfq/procurement-admin-create-new-rfq";
 import ProcurementAdminMyPurchaseContracts from "./procurement-admin-purchase-contracts/procurement-admin-purchase-contracts";
 import ProcurementAdminMyPurchaseContractsDetails from "./procurement-admin-purchase-contracts/procurement-admin-purchase-contracts-details";
+import { Provider } from "react-redux";
+import { procurementAdminStore } from "../../store/procurement-admin/procurement-admin.store";
 
 
 const ProcurementAdminRoutes = () => {
-    const {procurementAdminNavigations, procurementAdminSettingsUnderlinedNavigations} = useContext(ProcurementAdminContext)
+    const { procurementAdminNavigations } = useContext(ProcurementAdminContext)
     return (
-        <Routes>
+        <Provider store={procurementAdminStore}>
+            <Routes>
             <Route path="/" element={<SideNavComponent navigationElements={procurementAdminNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
@@ -34,12 +36,8 @@ const ProcurementAdminRoutes = () => {
                     </Route>
                     <Route path="settings">
                         <Route index element={<ProcurementAdminSettingsAdminUsers />} />
-                        <Route path="user-roles" element={<ProcurementAdminSettingsUserRoles />}>
-                            <Route index element={<UnderlinedNav navigationElements={procurementAdminSettingsUnderlinedNavigations}/>} />
-                        </Route>
-                        <Route path="user-permissions" element={<ProcurementAdminSettingsUserPermissions />}>
-                            <Route index element={<UnderlinedNav navigationElements={procurementAdminSettingsUnderlinedNavigations}/>} />
-                        </Route>
+                        <Route path="user-roles" element={<ProcurementAdminSettingsUserRoles />} />
+                        <Route path="user-permissions" element={<ProcurementAdminSettingsUserPermissions />} />
                     </Route>
                     <Route path="bidders" element={<ProcurementAdminBidders />}/>
                     <Route path="/request-for-quotes">
@@ -63,6 +61,7 @@ const ProcurementAdminRoutes = () => {
                 </Route> 
             </Route>
         </Routes>
+        </Provider>
     )
 }
 

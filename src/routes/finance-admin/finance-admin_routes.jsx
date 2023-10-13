@@ -14,12 +14,15 @@ import FinanceAdminDashboard from "./finance-admin-dashboard/finance-admin-dashb
 import FinanceAdminMyPurchaseContractsDetails from "./finance-admin-purchase-contracts/finance-admin-purchase-contracts-details";
 import FinanceAdminMyPurchaseContracts from "./finance-admin-purchase-contracts/finance-admin-purchase-contracts";
 import FinanceAdminCreateNewRFQ from "./finance-admin-create-new-rfq/finance-admin-create-new-rfq";
+import { Provider } from "react-redux";
+import { financeAdminStore } from "../../store/finance-admin/finance-admin.store";
 
 
 const FinanceAdminRoutes = () => {
     const {financeAdminNavigations } = useContext(FinanceAdminContext)
     return (
-        <Routes>
+        <Provider store={financeAdminStore}>
+            <Routes>
             <Route path="/" element={<SideNavComponent navigationElements={financeAdminNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
@@ -49,6 +52,7 @@ const FinanceAdminRoutes = () => {
                 </Route> 
             </Route>
         </Routes>
+        </Provider>
     )
 }
 

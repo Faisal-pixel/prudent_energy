@@ -15,6 +15,10 @@ module.exports = {
         greyLight: "#FAFAFB",
         secondaryGreen: "#47B65C",
         figmaRed: "#FF0000"
+      },
+      transitionProperty: {
+        "height": "height",
+        "oveflow": "overflow"
       }
     },
   },

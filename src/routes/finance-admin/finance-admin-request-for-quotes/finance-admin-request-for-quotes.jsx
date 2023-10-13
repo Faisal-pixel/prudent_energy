@@ -1,14 +1,17 @@
-import { useContext, useState, } from "react";
+import { useState } from "react";
 import Greetings from "../../../components/greetings.component";
-import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
 import { useNavigate } from "react-router-dom";
-import { FinanceAdminContext } from "../context/finance-admin.context";
+import { useSelector } from "react-redux";
+import { selectFinanceAdminMyRequisitionsData, selectFinanceAdminRequisitionsColumns, selectFinanceAdminRfqUnderlinedNavigations } from "../../../store/finance-admin/finance-admin-rfq/finance-admin-rfq.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 const FinanceAdminRequestForQuotes = () => {
-    const {financeAdminRequestForQuotesUnderlinedNavigations, financeAdminRequestForQuotesMyRequisitionsData, financeAdminRequisitionsColumns} = useContext(FinanceAdminContext);
+    const financeAdminRequestForQuotesUnderlinedNavigations = useSelector(selectFinanceAdminRfqUnderlinedNavigations);
+    const financeAdminRequisitionsColumns = useSelector(selectFinanceAdminRequisitionsColumns);
+    const financeAdminRequestForQuotesMyRequisitionsData = useSelector(selectFinanceAdminMyRequisitionsData);
     const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState("");
 
@@ -42,7 +45,7 @@ const FinanceAdminRequestForQuotes = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={financeAdminRequisitionsColumns} data={filteredMyRequisitionsData} goTo={"my-requisitions/details"}/>
+                <GeneralTable columns={financeAdminRequisitionsColumns} filteredData={filteredMyRequisitionsData} details={"my-requisitions/details"}/>
             </div>
             
         </div>

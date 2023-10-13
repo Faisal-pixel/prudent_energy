@@ -94,8 +94,15 @@ import {ReactComponent as StatusCirclePendingSVG} from "../assets/status-small-c
 import {ReactComponent as StatusCircleCompletedSVG} from "../assets/status-small-circle-completed.svg"
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 // import { useContext } from 'react';
 // import { BidderContext } from '../routes/bidder/context/bidder.context';
+// try {
+//     const response = await axios.get("https://api-infracredit.azurewebsites.net/api/administrations/getuserroles")
+//     console.log(response.data)
+// } catch (error) {
+//     console.log(error.message)
+// }
 const bidderDashboardRecentBidsData = [
     {
         id: 1,

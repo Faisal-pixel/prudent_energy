@@ -1,11 +1,12 @@
-import { useContext } from "react";
-import { BidderContext } from "../context/bidder.context";
 import ActivityStatus from "../../../components/activity-status.component";
-
-import ReactTable from "../../../components/react-table.component";
 import Greetings from "../../../components/greetings.component";
+import { useSelector } from "react-redux";
+import { selectBidderActivityStatusData, selectBidderDashboardRecentBidsColumn, selectBidderDashboardRecentBidsData } from "../../../store/bidder/bidder-dashboard-reducer/bidder-dashboard.selector";
+import GeneralTable from "../../../components/general-table.component";
 const BidderDashboard = () => {
-    const { bidderActivityStatusData, bidderDashboardRecentBidsColumns, bidderDashboardRecentBidsData } = useContext(BidderContext);
+    const bidderActivityStatusData = useSelector(selectBidderActivityStatusData);
+    const bidderDashboardRecentBidsColumns = useSelector(selectBidderDashboardRecentBidsColumn);
+    const bidderDashboardRecentBidsData = useSelector(selectBidderDashboardRecentBidsData);
     return (
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className="">
@@ -27,7 +28,7 @@ const BidderDashboard = () => {
                 <p className="text-primaryBlue font-bold text-xl">
                     My Recent Bids
                 </p>
-                <ReactTable columns={bidderDashboardRecentBidsColumns} data={bidderDashboardRecentBidsData} goTo={"details"}/>
+                <GeneralTable columns={bidderDashboardRecentBidsColumns} filteredData={bidderDashboardRecentBidsData} clickable="details"/>
             </div>
             
         </div> 

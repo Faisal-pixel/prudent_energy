@@ -1,12 +1,13 @@
-import { useContext} from "react";
 import ActivityStatus from "../../../components/activity-status.component";
-
-import ReactTable from "../../../components/react-table.component";
-import { ProcurementAdminContext } from "../context/procurement-admin.context";
 import SwitchRecords from "../../../components/switch-records-component";
 import Greetings from "../../../components/greetings.component";
+import { useSelector } from "react-redux";
+import { selectProcurementAdminDashboardActivityStatusData, selectProcurementAdminDashboardRecentRequisitionsColumns, selectProcurementAdminDashboardRecentRequisitionsData } from "../../../store/procurement-admin/procurement-admin-dashboard/procurement-admin-dashboard.selector";
+import GeneralTable from "../../../components/general-table.component";
 const ProcurementAdminDashboard = () => {
-    const { procurementAdminActivityStatusData, procurementAdminRequisitionsColumns, procurementAdminDashboardRecentRequisitionsData } = useContext(ProcurementAdminContext);
+    const procurementAdminActivityStatusData = useSelector(selectProcurementAdminDashboardActivityStatusData)
+    const procurementAdminDashboardRecentRequisitionsColumns = useSelector(selectProcurementAdminDashboardRecentRequisitionsColumns);
+    const procurementAdminDashboardRecentRequisitionsData = useSelector(selectProcurementAdminDashboardRecentRequisitionsData);
     
     return (
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
@@ -30,7 +31,7 @@ const ProcurementAdminDashboard = () => {
                 <p className="text-primaryBlue font-bold text-xl">
                     Recent Requisitions
                 </p>
-                <ReactTable columns={procurementAdminRequisitionsColumns} data={procurementAdminDashboardRecentRequisitionsData} goTo={"details"}/>
+                <GeneralTable columns={procurementAdminDashboardRecentRequisitionsColumns} data={procurementAdminDashboardRecentRequisitionsData} />
             </div>
             
         </div> 

@@ -1,13 +1,14 @@
-import { useContext} from "react";
 import ActivityStatus from "../../../components/activity-status.component";
 
-import ReactTable from "../../../components/react-table.component";
 import SwitchRecords from "../../../components/switch-records-component";
 import Greetings from "../../../components/greetings.component";
-import { ManagementContext } from "../context/management.context";
+import { useSelector } from "react-redux";
+import { selectManagementDashboardActivityStatusData, selectManagementDashboardRecentRequisitionsColumns, selectManagementDashboardRecentRequisitionsData } from "../../../store/management/management-dashboard/management-dashboard.selector";
+import GeneralTable from "../../../components/general-table.component";
 const ManagementDashboard = () => {
-    const { managementActivityStatusData, managementRequisitionsColumns, managementDashboardRecentRequisitionsData } = useContext(ManagementContext);
-    
+    const managementActivityStatusData = useSelector(selectManagementDashboardActivityStatusData);
+    const managementDashboardRecentRequisitionsColumns = useSelector(selectManagementDashboardRecentRequisitionsColumns);
+    const managementDashboardRecentRequisitionsData = useSelector(selectManagementDashboardRecentRequisitionsData);
     return (
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className="flex justify-between">
@@ -30,7 +31,7 @@ const ManagementDashboard = () => {
                 <p className="text-primaryBlue font-bold text-xl">
                     Recent Requisitions
                 </p>
-                <ReactTable columns={managementRequisitionsColumns} data={managementDashboardRecentRequisitionsData} goTo={"details"}/>
+                <GeneralTable columns={managementDashboardRecentRequisitionsColumns} filteredData={managementDashboardRecentRequisitionsData} clickable={"details"}/>
             </div>
             
         </div> 

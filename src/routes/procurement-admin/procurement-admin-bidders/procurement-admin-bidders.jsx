@@ -7,10 +7,14 @@ import { ProcurementAdminContext } from "../context/procurement-admin.context";
 import ReactTable from "../../../components/react-table.component";
 import { ComponentContext } from "../../../components/component-context";
 import CreateNewBidderForm from "../../../components/create-new-bidder-form.component";
+import { selectProcurementAdminBiddersColumn, selectProcurementAdminBiddersData } from "../../../store/procurement-admin/procurement-admin-bidders/procurement-admin-bidders.selector";
+import { useSelector } from "react-redux";
+import GeneralTable from "../../../components/general-table.component";
 
 
 const ProcurementAdminBidders = () => {
-    const {procurementAdminBiddersColumn, procurementAdminBiddersData} = useContext(ProcurementAdminContext)
+    const procurementAdminBiddersColumn = useSelector(selectProcurementAdminBiddersColumn)
+    const procurementAdminBiddersData = useSelector(selectProcurementAdminBiddersData)
     const {setCreateNewBidderModalIsOpen} = useContext(ComponentContext)
 
 
@@ -42,7 +46,7 @@ const ProcurementAdminBidders = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={procurementAdminBiddersColumn} data={filteredBiddersData}/>
+                <GeneralTable columns={procurementAdminBiddersColumn} filteredData={filteredBiddersData}/>
             </div>
             
         </div>

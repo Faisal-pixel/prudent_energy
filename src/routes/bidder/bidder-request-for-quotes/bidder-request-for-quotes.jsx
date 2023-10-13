@@ -1,13 +1,14 @@
-import { useContext, useState } from "react";
-import { BidderContext } from "../context/bidder.context";
-import ReactTable from "../../../components/react-table.component";
-
+import { useState } from "react";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
 import Greetings from "../../../components/greetings.component";
+import { useSelector } from "react-redux";
+import { selectBidderRequestForQuotesRecentBidsColumns, selectBidderRequestForQuotesRecentBidsData } from "../../../store/bidder/bidder-rfq-reducer/bidder-rfq.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 const BidderRFQ = () => {
     const [searchInput, setSearchInput] = useState("")
-    const {bidderRequestForQuotesRecentBidsColumns, bidderRequestForQuotesRecentBidsData} = useContext(BidderContext)
+    const bidderRequestForQuotesRecentBidsColumns = useSelector(selectBidderRequestForQuotesRecentBidsColumns)
+    const bidderRequestForQuotesRecentBidsData = useSelector(selectBidderRequestForQuotesRecentBidsData)
     const onSearchChange = (e) => {
         const searchInput = e.target.value;
         setSearchInput(searchInput);
@@ -32,7 +33,7 @@ const BidderRFQ = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={bidderRequestForQuotesRecentBidsColumns} data={filteredBidderRequestForQuotesRecentBidsData} goTo={"details"}/>
+                <GeneralTable columns={bidderRequestForQuotesRecentBidsColumns} filteredData={filteredBidderRequestForQuotesRecentBidsData} clickable={"details"}/>
             </div>
             
         </div>

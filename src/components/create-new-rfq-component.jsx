@@ -1,9 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import {ReactComponent as BreadCrumbRightNavigationSVG} from "../assets/bread-crumb-right-navigation.svg";
 import GeneralTemplateCreateNewRFQ from "./GeneralTemplateComponentCreateNewRFQ";
-import LegalTemplateDataSheetCreateNewRFQ from "./LegalTemplateDatasheetCreateNewRFQ.component";
-import ESGTemplateDataSheetCreateNewRFQ from "./ESGTemplateDatasheetCreateNewRFQ.component";
-import TechnicalTemplateDataSheetCreateNewRFQ from "./technical-template-datasheet-create-new-rfq.component";
+import DetailsTemplateCreateNewRFQ from "./DetailsTemplateCreateNewRFQ.component";
 const CreateNewRFQ = () => {
     const navigate = useNavigate();
     const handleClick = () => {
@@ -27,9 +25,7 @@ const CreateNewRFQ = () => {
             </div>
             {/* General Toggle */}
             <GeneralTemplateCreateNewRFQ />
-            <LegalTemplateDataSheetCreateNewRFQ />
-            <ESGTemplateDataSheetCreateNewRFQ />
-            <TechnicalTemplateDataSheetCreateNewRFQ />
+            <DetailsTemplateCreateNewRFQ />
         </div>
     </>
 }

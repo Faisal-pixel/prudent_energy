@@ -20,12 +20,15 @@ import ITAdminRequestForQuotesOtherRequisitions from "./it-admin-request-for-quo
 import ITAdminRequestForQuotesOtherRequisitionsDetails from "./it-admin-request-for-quotes/it-admin-request-for-quotes-other-requisitions-details";
 import ITAdminMyPurchaseContracts from "./it-admin-purchase-contracts/it-admin-purchase-contracts";
 import ITAdminMyPurchaseContractsDetails from "./it-admin-purchase-contracts/it-admin-purchase-contracts-details";
+import { Provider } from "react-redux";
+import { itAdminStore } from "../../store/it-admin/it-admin.store";
 
 
 const ITAdminRoutes = () => {
     const {itAdminNavigations, itAdminSettingsUnderlinedNavigations} = useContext(ITAdminContext)
     return (
-        <Routes>
+        <Provider store={itAdminStore}>
+            <Routes>
             <Route path="/" element={<SideNavComponent navigationElements={itAdminNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
@@ -64,6 +67,7 @@ const ITAdminRoutes = () => {
                 </Route> 
             </Route>
         </Routes>
+        </Provider>
     )
 }
 

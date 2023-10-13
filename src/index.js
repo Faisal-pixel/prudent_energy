@@ -11,26 +11,31 @@ import { ComponentContextProvider } from './components/component-context';
 import { ITAdminProvider } from './routes/it-admin/context/it-admin.context';
 import { FinanceAdminProvider } from './routes/finance-admin/context/finance-admin.context';
 import { ManagementProvider } from './routes/management/context/management.context';
+import { Provider } from 'react-redux';
+import { combinedStore } from './store/combined_store/combined.store';
+import { bidderStore } from './store/bidder/bidder.store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter basename='/'>
-      <ComponentContextProvider>
-        <BasicRequestorProvider>
-          <BidderProvider>
-            <ProcurementAdminProvider>
-              <ITAdminProvider>
-                <FinanceAdminProvider>
-                  <ManagementProvider>
-                    <App />
-                  </ManagementProvider>
-                </FinanceAdminProvider>
-              </ITAdminProvider>
-            </ProcurementAdminProvider>
-          </BidderProvider>
-        </BasicRequestorProvider>
-      </ComponentContextProvider>
+      <Provider store={combinedStore}>
+          <ComponentContextProvider>
+            <BasicRequestorProvider>
+              <BidderProvider>
+                <ProcurementAdminProvider>
+                  <ITAdminProvider>
+                    <FinanceAdminProvider>
+                      <ManagementProvider>
+                        <App />
+                      </ManagementProvider>
+                    </FinanceAdminProvider>
+                  </ITAdminProvider>
+                </ProcurementAdminProvider>
+              </BidderProvider>
+            </BasicRequestorProvider>
+          </ComponentContextProvider>
+        </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

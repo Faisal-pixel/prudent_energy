@@ -1,14 +1,16 @@
-import { useContext, useState, } from "react";
+import { useState, } from "react";
 import Greetings from "../../../components/greetings.component";
-import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
-import { ITAdminContext } from "../context/it-admin.context";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
+import { useSelector } from "react-redux";
+import { selectItAdminRequestForQuotesTeamRequisitionsData, selectItAdminRequisitionsColumns, selectItAdminRfqUnderlinedNavigations } from "../../../store/it-admin/it-admin-rfq/it-admin-rfq.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 const ITAdminRequestForQuotesTeamRequisitions = () => {
-    const {itAdminRequestForQuotesUnderlinedNavigations, itAdminRequestForQuotesTeamRequisitionsData, itAdminRequisitionsColumns} = useContext(ITAdminContext);
-
+    const itAdminRequestForQuotesUnderlinedNavigations = useSelector(selectItAdminRfqUnderlinedNavigations);
+    const itAdminRequisitionsColumns = useSelector(selectItAdminRequisitionsColumns);
+    const itAdminRequestForQuotesTeamRequisitionsData = useSelector(selectItAdminRequestForQuotesTeamRequisitionsData);
     const [searchInput, setSearchInput] = useState("")    
 
     const onSearchChange = (e) => {
@@ -36,7 +38,7 @@ const ITAdminRequestForQuotesTeamRequisitions = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={itAdminRequisitionsColumns} data={filteredTeamRequisitionsData} goTo={"details"}/>
+                <GeneralTable columns={itAdminRequisitionsColumns} filteredData={filteredTeamRequisitionsData}/>
             </div>
             
         </div>

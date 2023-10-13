@@ -1,13 +1,16 @@
-import { useContext, useState, } from "react";
+import { useState, } from "react";
 import Greetings from "../../../components/greetings.component";
-import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
-import { ManagementContext } from "../context/management.context";
+import { useSelector } from "react-redux";
+import { selectManagementRequestForQuotesOtherRequisitionsData, selectManagementRequisitionsColumns, selectManagementRfqUnderlinedNavigations } from "../../../store/management/management-rfq/management-rfq.selector";
+import GeneralTable from "../../../components/general-table.component";
 const ManagementRequestForQuotesOtherRequisitions = () => {
-    const {managementRequestForQuotesUnderlinedNavigations, managementRequestForQuotesOtherRequisitionsData, managementRequisitionsColumns} = useContext(ManagementContext);
-    const [searchInput, setSearchInput] = useState("")    
+    const managementRequestForQuotesUnderlinedNavigations = useSelector(selectManagementRfqUnderlinedNavigations);
+    const managementRequisitionsColumns = useSelector(selectManagementRequisitionsColumns);
+    const managementRequestForQuotesOtherRequisitionsData = useSelector(selectManagementRequestForQuotesOtherRequisitionsData)
+    const [searchInput, setSearchInput] = useState("");
 
     const onSearchChange = (e) => {
         const searchInput = e.target.value;
@@ -34,7 +37,7 @@ const ManagementRequestForQuotesOtherRequisitions = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={managementRequisitionsColumns} data={filteredOtherRequisitionsData} goTo={"details"}/>
+                <GeneralTable columns={managementRequisitionsColumns} filteredData={filteredOtherRequisitionsData} clickable={"details"}/>
             </div>
             
         </div>

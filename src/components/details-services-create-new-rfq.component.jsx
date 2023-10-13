@@ -1,33 +1,13 @@
 import { useCallback, useContext, useMemo, useState } from "react";
 import {ReactComponent as BreadCrumbRightNavigationSVG} from "../assets/bread-crumb-right-navigation.svg";
-import {ReactComponent as ToggleOpenIcon} from "../assets/toggle-point-up-open.svg";
 import {ReactComponent as UploadCloudIcon} from "../assets/upload-cloud-icon.svg";
 import SelectDropdown from "./SelectDropdown";
 import Modal from "./modal";
 import { ProcurementAdminContext } from "../routes/procurement-admin/context/procurement-admin.context";
 import ReactTable from "./react-table.component";
-const daysHours = [
-    {
-        accessorID: 1,
-        option: "Days"
-    },
-    {
-        accessorID: 2,
-        option: "Hours"
-    },
-    
-]
-const category = [
-    {
-        accessorID: 1,
-        option: "Category 1"
-    },
-    {
-        accessorID: 2,
-        option: "Category 2"
-    },
-    
-]
+import { ComponentContext } from "./component-context";
+import DetailsGoods from "./details-goods-template.component";
+import HtmlEditorComponent from "./html-editor.component";
 
 const listOfBiddersRFQ = [
     {
@@ -52,8 +32,12 @@ const listOfBiddersRFQ = [
     },
     
 ]
-const LegalTemplateDataSheetCreateNewRFQ = () => {
-    const { procurementAdminNominatedBiddersColumns, procurementAdminMyRequisitionsNominatedBiddersData } = useContext(ProcurementAdminContext) 
+
+const DetailsServicesCreateNewRFQComponent = () => {
+    // const location = useLocation();
+    // const requisitionData = location.state.rowData;
+    const { procurementAdminNominatedBiddersColumns, procurementAdminMyRequisitionsNominatedBiddersData } = useContext(ProcurementAdminContext);
+    const { detailsTemplateToggleIsOpen, otherGeneralTemplateRequisitionTypeSelectValue } = useContext(ComponentContext);
 
     const reviewQuotesColumn = useMemo(() => [
         {
@@ -92,7 +76,7 @@ const LegalTemplateDataSheetCreateNewRFQ = () => {
         },
     ], [])
 
-    const [templateDrop, setTemplateDrop] = useState(false);
+    
 
     const [isDropdownDropped, setDropdownDropped] = useState({
         daysHours: {
@@ -152,7 +136,8 @@ const LegalTemplateDataSheetCreateNewRFQ = () => {
             }
         ))
     }
-    return <>
+  return (
+    <>
         {/* Select Preferred Bidders */}
         <Modal onClose={() => closeModal("selectPreferredBidders")} isOpen={isModalOpen.selectPreferredBidders}>
             <div className="space-y-4">
@@ -206,58 +191,39 @@ const LegalTemplateDataSheetCreateNewRFQ = () => {
                 </div>
             </div>
         </Modal>
-        {/* Legal Template Datasheet */}
-        <div className="border border-primaryBlue">
-                {/* Header Div */}
-                <header className="bg-primaryBlue flex justify-between items-center text-white py-2 px-3 cursor-pointer" onClick={() => setTemplateDrop(!templateDrop)}>
-                    Legal Template Datasheet
-                    <ToggleOpenIcon />
-                </header>
-                {/************************************** Body Of LEGAL TEMPLATE DATASHEET **********************************/}
-                {templateDrop && <div className="container px-4 py-3 space-y-3">
-                    <div className="flex space-x-7">
-                        <div className="flex flex-col space-y-1 basis-1/4">
-                            <label>Company Overview:</label>
-                            <textarea className="border border-greyDark rounded-md px-2 py-0.5 w-full h-24 resize-none" type="text" value={"1,200,000"} readOnly> </textarea>
-                        </div>
-                        <div className="flex flex-col space-y-1 basis-1/4">
-                            <label>Project Description:</label>
-                            <textarea className="border border-greyDark rounded-md px-2 py-0.5 w-full h-24 resize-none" type="text" value={"1,200,000"} readOnly> </textarea>
-                        </div>
-                        <div className="flex flex-col space-y-1 basis-1/4">
-                            <label>Scope of Work:</label>
-                            <textarea className="border border-greyDark rounded-md px-2 py-0.5 w-full h-24 resize-none" type="text" value={"1,200,000"} readOnly> </textarea>
-                        </div>
-
-                        {/* Expiration Duration, Select, Service Category */}
-                        <div className="flex flex-col space-y-1 basis-1/4">
-                            {/* Expiration Duration & Select */}
-                            <div className="flex space-x-2">
-                                <div className="space-y-1 max-w-max ">
-                                    <label>Expiration Duration: </label>
-                                    <input type="text" placeholder="Input number" className="px-1 py-1 border border-greyDark rounded"/> 
-                                </div>
-                                <div className="basis-1/2 border border-greyDark px-1 py-1 rounded flex justify-between h-max items-center self-end relative cursor-pointer" onClick={() => toggleDropdown("daysHours")}>
-                                    <div className="pleaseSelect">{isDropdownDropped.daysHours.selectedValue}</div>
-                                    <BreadCrumbRightNavigationSVG className="inline" />
-                                    {
-                                        isDropdownDropped.daysHours.isOpen && <SelectDropdown setUpdateSelect={(selectedValue) => handleSelectOption("daysHours", selectedValue)} optionsData={daysHours}/>
-                                    }
-                                </div>
-                            </div>
-                            {/* Service Category */}
-                            <div>
-                                <label>Service Category:</label>
-                                <div className="border border-greyDark rounded flex justify-between h-max items-center self-end px-2 py-1 relative cursor-pointer" onClick={() => toggleDropdown("serviceCategory")}>
-                                    <div className="pleaseSelect">{isDropdownDropped.serviceCategory.selectedValue}</div>
-                                    <BreadCrumbRightNavigationSVG className="inline" />
-                                    {
-                                        isDropdownDropped.serviceCategory.isOpen && <SelectDropdown setUpdateSelect={(selectedValue) => handleSelectOption("serviceCategory", selectedValue)} optionsData={category}/>
-                                    }
-                                </div>
-                            </div>
-                        </div>
+        <div className={`container bg-greyLight px-4 transition-all h-0 border border-primaryBlue space-y-3 ${detailsTemplateToggleIsOpen && "h-[100%] py-3 overflow-visible"} space-y-3 overflow-hidden`}>
+                <div className="flex space-x-7">
+                    <div className="flex flex-col space-y-1 basis-[15%]">
+                        <label>Service Category:</label>
+                        <select className="border border-greyDark rounded-md px-2 py-0.5" >
+                            <option value="category1">Category 1</option>
+                            <option value="category2">Category 2</option>
+                        </select>
                     </div>
+                    <div className="flex flex-col space-y-1">
+                        <label>Expiration Duration:</label>
+                        <input type="text" className="border border-greyDark rounded-md px-2 py-0.5" placeholder="Input number"/>
+                    </div>
+                    <div className="flex flex-col space-y-1">
+                        <label>Service Category:</label>
+                        <select className="border border-greyDark rounded-md px-2 py-0.5" >
+                            <option value="select" disabled>Select</option>
+                            <option value="days">Days</option>
+                            <option value="hours">Hours</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="flex space-x-7">
+                    <div className="flex flex-col relative">
+                        <label className="mb-1">Scope of work</label>
+                        {/* <textarea className="border border-greyDark rounded-md px-2 py-0.5 w-full h-24 resize-none" type="text" readOnly> </textarea> */}
+                        <div id="toolbar-container" className="border border-[#ddd]"></div>
+                        <HtmlEditorComponent />
+                    </div>
+                </div>
+                {
+                    otherGeneralTemplateRequisitionTypeSelectValue === "Goods" && <DetailsGoods />
+                }
                     <div className="flex space-x-2">
                         <button type="button" className="border-2 border-primaryBlue px-2 py-0.5 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Preview Template</button>
                         <button type="button" className="border-2 border-primaryBlue px-2 py-0.5 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Select all bidders</button>
@@ -268,7 +234,7 @@ const LegalTemplateDataSheetCreateNewRFQ = () => {
                         <div className="flex justify-between">
                             <h3 className="font-bold text-primaryBlue text-xl">Nominated Bidders</h3>
                             <div>
-                                <p className="text-primaryBlue text-sm"> Expiration Date & Time: </p>
+                                <p className="text-primaryBlue text-sm"> Expiration Date & Time: 00:00:00</p>
                                 <p className="text-[#FF0000] text-sm">Expiration Countdown: 00:00:03 Hours</p>
                             </div>
                         </div>
@@ -277,21 +243,18 @@ const LegalTemplateDataSheetCreateNewRFQ = () => {
                             <ReactTable columns={procurementAdminNominatedBiddersColumns} data={procurementAdminMyRequisitionsNominatedBiddersData}/>
                         </div>
 
-                        <div className="space-x-2">
+                        <div className="flex justify-between">
                             <button type="button" className="border-2 border-primaryBlue px-6 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Reset Bidders</button>
                             <button type="button" className="border-2 border-primaryBlue px-6 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Notify Bidders</button>
                             <button type="button" className="border-2 border-primaryBlue px-6 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white" onClick={() => openModal("reviewQuotesModal")}>Review Quotes</button>
-                        </div>
-                        <div className="space-x-2">
                             <button type="button" className="border-2 border-primaryBlue px-4 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white" onClick={() => openModal("uploadContractsForWinnerModal")}>Upload Contract for Winner</button>
                             <button type="button" className="border-2 border-primaryBlue px-4 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">View Contract</button>
                             <button type="button" className="border-2 border-primaryBlue px-4 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Notify Bid Losers</button>
                         </div>
                     </div>
                 </div>
-                }
-            </div>
     </>
+  )
 }
 
-export default LegalTemplateDataSheetCreateNewRFQ;
+export default DetailsServicesCreateNewRFQComponent;

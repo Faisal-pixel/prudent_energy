@@ -1,15 +1,15 @@
-import { useContext, useState } from "react";
-import ReactTable from "../../../components/react-table.component";
-
+import { useState } from "react";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
 import SearchInputComponent from "../../../components/search-input.component";
-import { BasicRequestorContext } from "../context/basic-requestor-context";
 import Greetings from "../../../components/greetings.component";
+import { selectBasicRequestorPurchaseContractsData } from "../../../store/basic-requestor/basic-requestor-purchase-contracts/basic-requestor-purchase-contracts.selector";
+import { useSelector } from "react-redux";
+import PurchaseContractsTables from "../../../components/purchase-contracts-table";
 
 
 const BasicRequestorMyPurchaseContracts = () => {
     const [searchInput, setSearchInput] = useState("")
-    const {basicRequestorPurchaseContractsColumns, basicRequestorPurchaseContractsData} = useContext(BasicRequestorContext)
+    const basicRequestorPurchaseContractsData = useSelector(selectBasicRequestorPurchaseContractsData);
     const onSearchChange = (e) => {
         const searchInput = e.target.value;
         setSearchInput(searchInput);
@@ -34,7 +34,7 @@ const BasicRequestorMyPurchaseContracts = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={basicRequestorPurchaseContractsColumns} data={filteredPurchaseContractsData} goTo={"details"}/>
+                <PurchaseContractsTables filteredData={filteredPurchaseContractsData}/>
             </div>
         </div>
     </>

@@ -1,14 +1,17 @@
-import { useContext, useState, } from "react";
+import { useState, } from "react";
 import Greetings from "../../../components/greetings.component";
-import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
-import { ITAdminContext } from "../context/it-admin.context";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectItAdminMyRequisitionsData, selectItAdminRequisitionsColumns, selectItAdminRfqUnderlinedNavigations } from "../../../store/it-admin/it-admin-rfq/it-admin-rfq.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 const ITAdminRequestForQuotes = () => {
-    const {itAdminRequestForQuotesUnderlinedNavigations, itAdminRequestForQuotesMyRequisitionsData, itAdminRequisitionsColumns} = useContext(ITAdminContext);
+    const itAdminRequestForQuotesUnderlinedNavigations = useSelector(selectItAdminRfqUnderlinedNavigations);
+    const itAdminRequisitionsColumns = useSelector(selectItAdminRequisitionsColumns);
+    const itAdminRequestForQuotesMyRequisitionsData = useSelector(selectItAdminMyRequisitionsData);
     const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState("");
 
@@ -42,7 +45,7 @@ const ITAdminRequestForQuotes = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={itAdminRequisitionsColumns} data={filteredMyRequisitionsData} goTo={"my-requisitions/details"}/>
+                <GeneralTable columns={itAdminRequisitionsColumns} filteredData={filteredMyRequisitionsData}/>
             </div>
             
         </div>

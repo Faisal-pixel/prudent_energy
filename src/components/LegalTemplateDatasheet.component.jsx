@@ -55,7 +55,7 @@ const listOfBiddersRFQ = [
 ]
 const LegalTemplateDataSheet = () => {
     const location = useLocation();
-    const requisitionData = location.state.row;
+    const requisitionData = location.state.rowData;
     const { procurementAdminNominatedBiddersColumns, procurementAdminMyRequisitionsNominatedBiddersData } = useContext(ProcurementAdminContext) 
 
     const reviewQuotesColumn = useMemo(() => [

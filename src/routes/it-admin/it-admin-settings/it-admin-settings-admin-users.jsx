@@ -1,12 +1,23 @@
-import ReactTable from "../../../components/react-table.component";
-import { useContext, useState } from "react";
-import { ITAdminContext } from "../context/it-admin.context";
+import { useEffect, useState } from "react";
 import UnderlinedNav from "../../../components/underlined-nav.component";
 import Modal from "../../../components/modal";
 import {ReactComponent as XButtonSVG} from "../../../assets/x-button-icon.svg";
 import Greetings from "../../../components/greetings.component";
+import { useDispatch, useSelector } from "react-redux";
+import { selectItAdminAdminUsersColumns, selectItAdminAdminUsersData, selectItAdminAdminUsersStatus, selectItAdminSettingsUnderlinedNavigations } from "../../../store/it-admin/it-admin-settings/it-admin-settings.selector";
+import GeneralTable from "../../../components/general-table.component";
+import { fetchItAdminSettingsAdminUsers } from "../../../store/it-admin/it-admin-settings/it_admin_settings.thunk_actions";
 const ITAdminSettingsAdminUsers = () => {
-    const {itAdminAdminUsersColumns, itAdminAdminUsersData, itAdminSettingsUnderlinedNavigations} = useContext(ITAdminContext);
+    const dispatch = useDispatch();
+    const itAdminSettingsUnderlinedNavigations = useSelector(selectItAdminSettingsUnderlinedNavigations);
+    const itAdminAdminUsersColumns = useSelector(selectItAdminAdminUsersColumns);
+    const itAdminAdminUsersData = useSelector(selectItAdminAdminUsersData);
+    const itAdminAdminUsersStatus = useSelector(selectItAdminAdminUsersStatus);
+    useEffect(() => {
+        if(itAdminAdminUsersStatus === "idle") {
+            dispatch(fetchItAdminSettingsAdminUsers())
+        }
+    }, [itAdminAdminUsersStatus, dispatch])
     const [addNewUserModalIsOpen, setAddNewUserModalIsOpen] = useState(false);
     const handleAddNewUserModal = () => {
         setAddNewUserModalIsOpen(!addNewUserModalIsOpen);
@@ -70,7 +81,7 @@ const ITAdminSettingsAdminUsers = () => {
 
             <div className="bg-white px-3 py-4">
                 
-                <ReactTable columns={itAdminAdminUsersColumns} data={itAdminAdminUsersData}/>
+                <GeneralTable columns={itAdminAdminUsersColumns} filteredData={itAdminAdminUsersData}/>
             </div>
             
         </div>

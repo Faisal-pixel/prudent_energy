@@ -1,15 +1,16 @@
-import { useContext, useState } from "react";
-import ReactTable from "../../../components/react-table.component";
-
+import { useState } from "react";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
 import SearchInputComponent from "../../../components/search-input.component";
 import Greetings from "../../../components/greetings.component";
-import { FinanceAdminContext } from "../context/finance-admin.context";
+import { useSelector } from "react-redux";
+import { selectFinanceAdminPurchaseContractsColumn, selectFinanceAdminPurchaseContractsData } from "../../../store/finance-admin/finance-admin-purchase-contracts/finance-admin-purchase-contracts.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 
 const FinanceAdminMyPurchaseContracts = () => {
     const [searchInput, setSearchInput] = useState("")
-    const {financeAdminPurchaseContractsColumns, financeAdminPurchaseContractsData} = useContext(FinanceAdminContext)
+    const financeAdminPurchaseContractsColumns = useSelector(selectFinanceAdminPurchaseContractsColumn);
+    const financeAdminPurchaseContractsData = useSelector(selectFinanceAdminPurchaseContractsData)
     const onSearchChange = (e) => {
         const searchInput = e.target.value;
         setSearchInput(searchInput);
@@ -34,7 +35,7 @@ const FinanceAdminMyPurchaseContracts = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={financeAdminPurchaseContractsColumns} data={filteredPurchaseContractsData} goTo={"details"}/>
+                <GeneralTable columns={financeAdminPurchaseContractsColumns} filteredData={filteredPurchaseContractsData} goTo={"details"}/>
             </div>
         </div>
     </>

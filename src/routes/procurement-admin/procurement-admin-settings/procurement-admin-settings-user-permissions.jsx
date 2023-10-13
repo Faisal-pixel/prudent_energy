@@ -1,11 +1,15 @@
-import { useContext, useMemo } from "react";
-import { Outlet } from "react-router-dom";
-import { ProcurementAdminContext } from "../context/procurement-admin.context";
+import { useMemo } from "react";
 import ReactTable from "../../../components/react-table.component";
 import Greetings from "../../../components/greetings.component";
+import { selectProcurementAdminSettingsUnderlinedNavigations, selectProcurementAdminUserPermissionsColumn, selectProcurementAdminUserPermissionsData } from "../../../store/procurement-admin/procurement-admin-settings/procurement-admin-settings.selector";
+import { useSelector } from "react-redux";
+import UnderlinedNav from "../../../components/underlined-nav.component";
+import GeneralTable from "../../../components/general-table.component";
 
 const ProcurementAdminSettingsUserPermissions = () => {
-    const {procurementAdminUserPermissionsColumns, procurementAdminUserPermissionsData} = useContext(ProcurementAdminContext)
+    const procurementAdminUserPermissionsColumns = useSelector(selectProcurementAdminUserPermissionsColumn);
+    const procurementAdminUserPermissionsData = useSelector(selectProcurementAdminUserPermissionsData);
+    const procurementAdminSettingsUnderlinedNavigations = useSelector(selectProcurementAdminSettingsUnderlinedNavigations);
     const permissionOptions = useMemo(() => [
         {
             id: 1,
@@ -42,7 +46,7 @@ const ProcurementAdminSettingsUserPermissions = () => {
                 <Greetings />
             </div>
 
-            <Outlet />
+            <UnderlinedNav navigationElements={procurementAdminSettingsUnderlinedNavigations} />
             <div className="flex justify-between">
                 <div>
                     <label>Permission set: </label>
@@ -58,8 +62,7 @@ const ProcurementAdminSettingsUserPermissions = () => {
                 </div>
             </div>
             <div className="bg-white px-3 py-4">
-                
-                <ReactTable columns={procurementAdminUserPermissionsColumns} data={procurementAdminUserPermissionsData}/>
+                <GeneralTable filteredData={procurementAdminUserPermissionsData} columns={procurementAdminUserPermissionsColumns}/>
             </div>
             
         </div>

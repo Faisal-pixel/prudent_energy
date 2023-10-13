@@ -1,12 +1,13 @@
-import { useContext } from "react";
 import ActivityStatus from "../../../components/activity-status.component";
-
-import ReactTable from "../../../components/react-table.component";
-import { BasicRequestorContext } from "../context/basic-requestor-context";
 import { Link } from "react-router-dom";
 import Greetings from "../../../components/greetings.component";
+import { useSelector } from "react-redux";
+import { selectBasicRequestorActivityStatusData, selectBasicRequestorMyRecentRequisitionsColumn, selectBasicRequestorMyRecentRequisitionsData } from "../../../store/basic-requestor/basic-requestor-my-requisitions-reducer/basic-requestor-my-requisitions.selector";
+import GeneralTable from "../../../components/general-table.component";
 const BasicRequestorMyRecentRequisitions = () => {
-    const { basicRequestorActivityStatusData, basicRequestorMyRecentRequisitionsColumns, basicRequestorMyRecentRequisitionsData } = useContext(BasicRequestorContext);
+    const basicRequestorActivityStatusData = useSelector(selectBasicRequestorActivityStatusData);
+    const basicRequestorMyRecentRequisitionsColumn = useSelector(selectBasicRequestorMyRecentRequisitionsColumn);
+    const basicRequestorMyRecentRequisitionsData = useSelector(selectBasicRequestorMyRecentRequisitionsData);
     return (
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className=" flex  justify-between">
@@ -29,7 +30,7 @@ const BasicRequestorMyRecentRequisitions = () => {
                 <p className="text-primaryBlue font-bold text-xl">
                     My Recent Requisitions
                 </p>
-                <ReactTable columns={basicRequestorMyRecentRequisitionsColumns} data={basicRequestorMyRecentRequisitionsData} goTo={"details"}/>
+                <GeneralTable columns={basicRequestorMyRecentRequisitionsColumn} filteredData={basicRequestorMyRecentRequisitionsData} clickable={"details"}/>
             </div>
             
         </div> 

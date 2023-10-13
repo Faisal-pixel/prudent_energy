@@ -1,12 +1,24 @@
-import ReactTable from "../../../components/react-table.component";
-import { useContext, useState } from "react";
-import { ProcurementAdminContext } from "../context/procurement-admin.context";
+import { useEffect, useState } from "react";
 import UnderlinedNav from "../../../components/underlined-nav.component";
 import Modal from "../../../components/modal";
 import {ReactComponent as XButtonSVG} from "../../../assets/x-button-icon.svg";
 import Greetings from "../../../components/greetings.component";
+import { useDispatch, useSelector } from "react-redux";
+import { selectProcurementAdminAdminUsersColumns, selectProcurementAdminAdminUsersData, selectProcurementAdminAdminUsersStatus, selectProcurementAdminSettingsUnderlinedNavigations } from "../../../store/procurement-admin/procurement-admin-settings/procurement-admin-settings.selector";
+import GeneralTable from "../../../components/general-table.component";
+import { fetchProcurementAdminSettingsAdminUsers } from "../../../store/procurement-admin/procurement-admin-settings/procurement_admin_settings.thunk_actions";
 const ProcurementAdminSettingsAdminUsers = () => {
-    const {procurementAdminAdminUsersColumns, procurementAdminAdminUsersData, procurementAdminSettingsUnderlinedNavigations} = useContext(ProcurementAdminContext);
+    const dispatch = useDispatch();
+    const procurementAdminAdminUsersColumns = useSelector(selectProcurementAdminAdminUsersColumns)
+    const procurementAdminAdminUsersData = useSelector(selectProcurementAdminAdminUsersData);
+    const procurementAdminSettingsUnderlinedNavigations = useSelector(selectProcurementAdminSettingsUnderlinedNavigations);
+    const procurementAdminAdminUsersStatus = useSelector(selectProcurementAdminAdminUsersStatus);
+    useEffect(() => {
+        if(procurementAdminAdminUsersStatus === "idle") {
+            dispatch(fetchProcurementAdminSettingsAdminUsers())
+        }
+    }, [procurementAdminAdminUsersStatus, dispatch])
+    
     const [addNewUserModalIsOpen, setAddNewUserModalIsOpen] = useState(false);
     const handleAddNewUserModal = () => {
         setAddNewUserModalIsOpen(!addNewUserModalIsOpen);
@@ -70,7 +82,7 @@ const ProcurementAdminSettingsAdminUsers = () => {
 
             <div className="bg-white px-3 py-4">
                 
-                <ReactTable columns={procurementAdminAdminUsersColumns} data={procurementAdminAdminUsersData}/>
+                <GeneralTable columns={procurementAdminAdminUsersColumns} filteredData={procurementAdminAdminUsersData}/>
             </div>
             
         </div>

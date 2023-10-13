@@ -1,0 +1,11 @@
+import { createSelector } from "reselect";
+
+export const selectProcurementAdminRfqReducer = (state) => state.procurementAdminRfq;
+export const selectProcurementAdminRfqUnderlinedNavigations = createSelector([selectProcurementAdminRfqReducer], (procurementAdminRfqSlice) => procurementAdminRfqSlice.procurementAdminRFQUnderlinedNavigations);
+export const selectProcurementAdminRequisitionsColumns = createSelector([selectProcurementAdminRfqReducer], (procurementAdminRfqSlice) => procurementAdminRfqSlice.procurementAdminMyRequisitionsColumns);
+//MY REQUISITIONS
+export const selectProcurementAdminMyRequisitionsData = createSelector([selectProcurementAdminRfqReducer], (procurementAdminRfqSlice) => procurementAdminRfqSlice.procurementAdminMyRequisitions.procurementAdminMyRequisitionsData);
+//TEAM REQUISITIONS
+export const selectProcurementAdminRequestForQuotesTeamRequisitionsData = createSelector([selectProcurementAdminRfqReducer], (procurementAdminRfqSlice) => procurementAdminRfqSlice.procurementAdminRequestForQuotesTeamRequisitions.procurementAdminRequestForQuotesTeamRequisitionsData);
+//OTHER REQUISITIONS
+export const selectProcurementAdminRequestForQuotesOtherRequisitionsData = createSelector([selectProcurementAdminRfqReducer], (procurementAdminRfqSlice) => procurementAdminRfqSlice.procurementAdminRequestForQuotesOtherRequisitions.procurementAdminRequestForQuotesOtherRequisitionsData);

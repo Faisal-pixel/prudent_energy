@@ -1,11 +1,13 @@
-import { useContext, useMemo } from "react";
+import { useMemo } from "react";
 import { Outlet } from "react-router-dom";
-import { ITAdminContext } from "../context/it-admin.context";
-import ReactTable from "../../../components/react-table.component";
 import Greetings from "../../../components/greetings.component";
+import { useSelector } from "react-redux";
+import { selectItAdminUserPermissionsColumn, selectItAdminUserPermissionsData } from "../../../store/it-admin/it-admin-settings/it-admin-settings.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 const ITAdminSettingsUserPermissions = () => {
-    const {itAdminUserPermissionsColumns, itAdminUserPermissionsData} = useContext(ITAdminContext)
+    const itAdminUserPermissionsColumns = useSelector(selectItAdminUserPermissionsColumn);
+    const itAdminUserPermissionsData = useSelector(selectItAdminUserPermissionsData);
     const permissionOptions = useMemo(() => [
         {
             id: 1,
@@ -59,7 +61,7 @@ const ITAdminSettingsUserPermissions = () => {
             </div>
             <div className="bg-white px-3 py-4">
                 
-                <ReactTable columns={itAdminUserPermissionsColumns} data={itAdminUserPermissionsData}/>
+                <GeneralTable columns={itAdminUserPermissionsColumns} filteredData={itAdminUserPermissionsData}/>
             </div>
             
         </div>

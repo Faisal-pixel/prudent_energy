@@ -1,14 +1,17 @@
-import { useContext, useState, } from "react";
+import { useState } from "react";
 import Greetings from "../../../components/greetings.component";
-import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
 import { useNavigate } from "react-router-dom";
-import { ManagementContext } from "../context/management.context";
+import { useSelector } from "react-redux";
+import { selectManagementMyRequisitionsData, selectManagementRequisitionsColumns, selectManagementRfqUnderlinedNavigations } from "../../../store/management/management-rfq/management-rfq.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 const ManagementRequestForQuotes = () => {
-    const {managementRequestForQuotesUnderlinedNavigations, managementRequestForQuotesMyRequisitionsData, managementRequisitionsColumns} = useContext(ManagementContext);
+    const managementRequestForQuotesUnderlinedNavigations = useSelector(selectManagementRfqUnderlinedNavigations);
+    const managementRequisitionsColumns = useSelector(selectManagementRequisitionsColumns);
+    const managementRequestForQuotesMyRequisitionsData = useSelector(selectManagementMyRequisitionsData);
     const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState("");
 
@@ -42,7 +45,7 @@ const ManagementRequestForQuotes = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={managementRequisitionsColumns} data={filteredMyRequisitionsData} goTo={"my-requisitions/details"}/>
+                <GeneralTable columns={managementRequisitionsColumns} filteredData={filteredMyRequisitionsData} clickable={"my-requisitions/details"}/>
             </div>
             
         </div>

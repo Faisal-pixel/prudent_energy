@@ -1,13 +1,15 @@
-import { useContext, useState, } from "react";
+import { useState } from "react";
 import Greetings from "../../../components/greetings.component";
-import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
-import { ProcurementAdminContext } from "../context/procurement-admin.context";
-
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
+import { useSelector } from "react-redux";
+import { selectProcurementAdminRequestForQuotesOtherRequisitionsData, selectProcurementAdminRequisitionsColumns, selectProcurementAdminRfqUnderlinedNavigations } from "../../../store/procurement-admin/procurement-admin-rfq/procurement-admin-rfq.selector";
+import GeneralTable from "../../../components/general-table.component";
 const ProcurementAdminRequestForQuotesOtherRequisitions = () => {
-    const {procurementAdminRequestForQuotesUnderlinedNavigations, procurementAdminRequestForQuotesOtherRequisitionsData, procurementAdminRequisitionsColumns} = useContext(ProcurementAdminContext);
+    const procurementAdminRequestForQuotesUnderlinedNavigations = useSelector(selectProcurementAdminRfqUnderlinedNavigations)
+    const procurementAdminRequisitionsColumns = useSelector(selectProcurementAdminRequisitionsColumns);
+    const procurementAdminRequestForQuotesOtherRequisitionsData = useSelector(selectProcurementAdminRequestForQuotesOtherRequisitionsData);
     const [searchInput, setSearchInput] = useState("")    
 
     const onSearchChange = (e) => {
@@ -35,7 +37,7 @@ const ProcurementAdminRequestForQuotesOtherRequisitions = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={procurementAdminRequisitionsColumns} data={filteredOtherRequisitionsData} goTo={"details"}/>
+                <GeneralTable columns={procurementAdminRequisitionsColumns} filteredData={filteredOtherRequisitionsData} clickable={"details"}/>
             </div>
             
         </div>

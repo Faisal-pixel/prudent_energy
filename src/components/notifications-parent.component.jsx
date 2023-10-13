@@ -8,7 +8,7 @@ const NotificationsParentComponent = ({onClose, isNotificationParentOpen}) => {
         console.log(slideIn)
     }, [slideIn])
     return <>
-        <div className="fixed h-screen w-screen">
+        <div className="fixed h-screen w-screen z-50">
             <div className="bg-black bg-opacity-50 absolute inset-0" onClick={onClose}></div>
             <div className="fixed h-full max-w-[27%] right-0 pt-16 pr-8 space-y-2 overflow-y-auto overflow-x-hidden">
                 <div className={`bg-white pl-2 flex rounded transition ${slideIn ? "translate-x-0" : "translate-x-[150%]"}`}>

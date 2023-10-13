@@ -1,13 +1,17 @@
-import { useContext, useState, } from "react";
+import { useState, } from "react";
 import Greetings from "../../../components/greetings.component";
 import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
-import { ProcurementAdminContext } from "../context/procurement-admin.context";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
+import { useSelector } from "react-redux";
+import { selectProcurementAdminRequisitionsColumns, selectProcurementAdminRequestForQuotesTeamRequisitionsData, selectProcurementAdminRfqUnderlinedNavigations } from "../../../store/procurement-admin/procurement-admin-rfq/procurement-admin-rfq.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 const ProcurementAdminRequestForQuotesTeamRequisitions = () => {
-    const {procurementAdminRequestForQuotesUnderlinedNavigations, procurementAdminRequestForQuotesTeamRequisitionsData, procurementAdminRequisitionsColumns} = useContext(ProcurementAdminContext);
+    const procurementAdminRequestForQuotesUnderlinedNavigations = useSelector(selectProcurementAdminRfqUnderlinedNavigations)
+    const procurementAdminRequisitionsColumns = useSelector(selectProcurementAdminRequisitionsColumns);
+    const procurementAdminRequestForQuotesTeamRequisitionsData = useSelector(selectProcurementAdminRequestForQuotesTeamRequisitionsData);
 
     const [searchInput, setSearchInput] = useState("")    
 
@@ -36,7 +40,7 @@ const ProcurementAdminRequestForQuotesTeamRequisitions = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={procurementAdminRequisitionsColumns} data={filteredTeamRequisitionsData} goTo={"details"}/>
+                <GeneralTable columns={procurementAdminRequisitionsColumns} filteredData={filteredTeamRequisitionsData} clickable={"details"}/>
             </div>
             
         </div>

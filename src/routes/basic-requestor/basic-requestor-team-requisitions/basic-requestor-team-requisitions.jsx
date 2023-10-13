@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 import ActivityStatus from "../../../components/activity-status.component";
-
-import ReactTable from "../../../components/react-table.component";
-import { BasicRequestorContext } from "../context/basic-requestor-context";
 import Greetings from "../../../components/greetings.component";
+import { selectBasicRequestorActivityStatusData, selectBasicRequestorTeamRequisitionsColumn, selectBasicRequestorTeamRequisitionsData } from "../../../store/basic-requestor/basic-requestor-team-requisitions-reducer/basic-requestor-team-requisitions.selector";
+import GeneralTable from "../../../components/general-table.component";
 const BasicRequestorTeamRequisitions = () => {
-    const { basicRequestorActivityStatusData, basicRequestorTeamRequisitionsColumns, basicRequestorTeamRequisitionsData } = useContext(BasicRequestorContext);
+    const basicRequestorActivityStatusData = useSelector(selectBasicRequestorActivityStatusData);
+    const basicRequestorTeamRequisitionsColumns = useSelector(selectBasicRequestorTeamRequisitionsColumn);
+    const basicRequestorTeamRequisitionsData = useSelector(selectBasicRequestorTeamRequisitionsData);
     return (
         <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className=" flex  justify-between">
@@ -27,7 +28,7 @@ const BasicRequestorTeamRequisitions = () => {
                 <p className="text-primaryBlue font-bold text-xl">
                     My Recent Requisitions
                 </p>
-                <ReactTable columns={basicRequestorTeamRequisitionsColumns} data={basicRequestorTeamRequisitionsData} goTo={"details"}/>
+                <GeneralTable columns={basicRequestorTeamRequisitionsColumns} filteredData={basicRequestorTeamRequisitionsData} clickable={"details"}/>
             </div>
             
         </div> 

@@ -3,17 +3,17 @@ import Greetings from "../../../components/greetings.component";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
 
-
-import ReactTable from "../../../components/react-table.component";
 import { ComponentContext } from "../../../components/component-context";
 import CreateNewBidderForm from "../../../components/create-new-bidder-form.component";
-import { ManagementContext } from "../context/management.context";
+import { useSelector } from "react-redux";
+import { selectManagementBiddersColumn, selectManagementBiddersData } from "../../../store/management/management-bidders/management-bidders.selector";
+import GeneralTable from "../../../components/general-table.component";
 
 
 const ManagementBidders = () => {
-    const {managementBiddersColumn, managementBiddersData} = useContext(ManagementContext)
-    const {setCreateNewBidderModalIsOpen} = useContext(ComponentContext)
-
+    const {setCreateNewBidderModalIsOpen} = useContext(ComponentContext);
+    const managementBiddersColumn = useSelector(selectManagementBiddersColumn);
+    const managementBiddersData = useSelector(selectManagementBiddersData);
 
     const [searchInput, setSearchInput] = useState("")    
 
@@ -43,7 +43,7 @@ const ManagementBidders = () => {
                         <FilterIconSVG />
                     </div>
                 </div>
-                <ReactTable columns={managementBiddersColumn} data={filteredBiddersData}/>
+                <GeneralTable columns={managementBiddersColumn} filteredData={filteredBiddersData}/>
             </div>
             
         </div>
