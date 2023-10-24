@@ -4,7 +4,7 @@ import {NavLink, Outlet} from "react-router-dom";
 const SideNavComponent = ({navigationElements}) => {
     return (
         <div className="max-h-screen w-screen overflow-hidden flex">
-            <div className="bg-primaryBlue h-screen min-w-max px-5 py-2">
+            <div className="bg-primaryBlue h-screen block min-w-max px-5 py-2">
                 <div className="flex items-center justify-center px-8 py-4 my-4">
                     <PrudentEnergyLogo />
                 </div>

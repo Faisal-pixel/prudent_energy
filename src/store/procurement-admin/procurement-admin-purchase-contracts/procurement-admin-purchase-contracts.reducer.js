@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchProcurementAdminPurchaseContracts } from "./procurement_admin_purchase_contracts.thunk_actions";
 
 export const PROCUREMENT_ADMIN_PURCHASE_CONTRACTS_INITIAL_STATE = {
     
     procurementAdminPurchaseContractsColumns: [
         {
-            captioon: "Contract No",
-            dataField: "contractNo",
+            caption: "Contract No",
+            dataField: "id",
         },
         {
-            captioon: "Description",
+            caption: "Description",
             dataField: "description",
         },
         {
-            captioon: "Contract Date & Time",
-            dataField: "contractDateAndTime",
+            caption: "Contract Date & Time",
+            dataField: "creationDateTime",
         },
     ],
 
@@ -28,6 +29,21 @@ export const PROCUREMENT_ADMIN_PURCHASE_CONTRACTS_INITIAL_STATE = {
 export const procurementAdminPurchaseContractsSlice = createSlice({
     name: "procurementAdminPurchaseContracts",
     initialState: PROCUREMENT_ADMIN_PURCHASE_CONTRACTS_INITIAL_STATE,
+    extraReducers(builder) {
+        builder
+            .addCase(fetchProcurementAdminPurchaseContracts.pending, (state, action) => {
+                state.procurementAdminPurchaseContracts.status = "loading";
+            })
+            .addCase(fetchProcurementAdminPurchaseContracts.fulfilled, (state, action) => {
+                state.procurementAdminPurchaseContracts.status = "succeeded";
+                const loadedData = action.payload;
+                state.procurementAdminPurchaseContracts.procurementAdminPurchaseContractsData = [...loadedData];
+            })
+            .addCase(fetchProcurementAdminPurchaseContracts.rejected, (state, action) => {
+                state.procurementAdminPurchaseContracts.status = "failed";
+                state.procurementAdminPurchaseContracts.error = action.error.message;
+            })
+    }
 })
 
 export const procurementAdminPurchaseContractsReducer = procurementAdminPurchaseContractsSlice.reducer;

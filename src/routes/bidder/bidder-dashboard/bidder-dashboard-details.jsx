@@ -26,10 +26,12 @@ const BidderDashboardDetails = () => {
                 <a href="#" className="px-7 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Download RFQ</a>
                 <a href="#" className="px-7 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Submit Response</a>
             </div>
-            {/* General Toggle */}
+            <div className="space-y-5">
+                {/* General Toggle */}
             <BidderGeneralTemplateComponent />
             {/* RFQ response Toggle */}
             <BidderRfqResponseComponent />
+            </div>
         </div>
     </>
 }

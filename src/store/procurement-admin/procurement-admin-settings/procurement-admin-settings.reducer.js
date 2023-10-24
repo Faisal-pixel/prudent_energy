@@ -221,7 +221,6 @@ export const procurementAdminSettingsSlice = createSlice({
                     adminUser.id = nanoid();
                     return adminUser;
                 })
-                console.log(loadedData);
                 state.procurementAdminAdminUsers.procurementAdminAdminUsersData = [...loadedData];
             })
             .addCase(fetchProcurementAdminSettingsAdminUsers.rejected, (state, action) => {

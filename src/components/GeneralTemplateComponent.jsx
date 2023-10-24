@@ -2,6 +2,7 @@ import { useLocation, } from "react-router-dom";
 import {ReactComponent as ToggleOpenIcon} from "../assets/toggle-point-up-open.svg"
 import { useContext } from "react";
 import { ComponentContext } from "./component-context";
+import HtmlEditorGeneralComponent from "./html-editor-general.component";
 const GeneralTemplate = () => {
     const { generalTemplateToggleIsOpen, setOtherGeneralTemplateToggleIsOpen, otherGeneralTemplateRequisitionTypeSelectValue, setOtherGeneralTemplateRequisitionTypeSelectValue } = useContext(ComponentContext);
     const location = useLocation();
@@ -41,9 +42,10 @@ const GeneralTemplate = () => {
                         </div>
                     </div>
                     <div className="space-x-4">
-                        <div className="w-full space-y-2">
-                            <label>Description:</label>
-                            <div className="border border-greyDark round-md h-28 rounded-md overflow-y-auto px-2 py-1"></div>
+                        <div className="flex flex-col relative">
+                            <label className="mb-1">Description:</label>
+                            <div id="toolbar-container-general" className="border border-[#ddd]"></div>
+                            <HtmlEditorGeneralComponent />
                         </div>
                     </div>
                     <div className="flex space-x-4">

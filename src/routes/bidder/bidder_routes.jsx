@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import SideNavComponent from "../../components/side-nav.component";
-import { useContext } from "react";
+import SideNavMobileComponent from "../../components/side-nav-mobile.component";
+import { useContext, useEffect, useState } from "react";
 import { BidderContext } from "./context/bidder.context";
 import BidderDashboard from "./bidder-dashboard/bidder-dashboard";
 import TopNavComponent from "../../components/top-nav.component";
@@ -15,10 +16,24 @@ import BidderGeneralTemplateComponent from "../../components/bidder-general-temp
 
 const BidderRoutes = () => {
     const {bidderNavigations} = useContext(BidderContext)
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+          setScreenWidth(window.innerWidth);
+        }
+
+        // Attach the event listener when the component mounts
+        window.addEventListener('resize', handleResize);
+    
+        // Clean up the event listener when the component unmounts
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
     return (
         <Provider store={bidderStore}>
             <Routes>
-            <Route path="/" element={<SideNavComponent navigationElements={bidderNavigations}/>}>
+            <Route path="/" element={screenWidth < 1024 ? <SideNavMobileComponent navigationElements={bidderNavigations}/> : <SideNavComponent navigationElements={bidderNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
                     <Route path="dashboard/">

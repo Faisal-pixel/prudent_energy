@@ -8,7 +8,7 @@ const BidderDashboard = () => {
     const bidderDashboardRecentBidsColumns = useSelector(selectBidderDashboardRecentBidsColumn);
     const bidderDashboardRecentBidsData = useSelector(selectBidderDashboardRecentBidsData);
     return (
-        <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
+        <div className="bg-secondaryBackground overflow-y-scroll h-full w-full space-y-5 px-6 pt-6">
             <div className="">
                 <Greetings />
             </div>

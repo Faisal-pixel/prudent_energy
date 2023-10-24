@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import {ReactComponent as PrudentEnergyLogo} from "../assets/prudent-energy-logo-blue.svg";
 import {ReactComponent as SaphireProcureBlueLogoSvg} from "../assets/saphire_procure_blue_logo.svg";
 import {ReactComponent as NotificationSvg} from "../assets/notification.svg";
 import {ReactComponent as LogOutIconSvg} from "../assets/logout-icon.svg";
@@ -17,10 +18,15 @@ const TopNavComponent = () => {
             {
                 openNotification && <NotificationsParentComponent onClose={toggleNotificationBellClick} isNotificationParentOpen={openNotification}/>
             }
-            <div className="flex flex-col w-full mb-2 overflow-y-scroll bg-secondaryBackground">
+            <div className="flex flex-col mb-2 h-screen w-screen bg-secondaryBackground">
                 <nav className="bg-white px-4 py-3 flex w-full justify-between shadow-sm">
-                    <div>
-                        <SaphireProcureBlueLogoSvg />
+                    <div className="flex space-x-6">
+                        <div className="flex items-center justify-center lg:hidden">
+                            <PrudentEnergyLogo className="text-primaryBlue"/>
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <SaphireProcureBlueLogoSvg />
+                        </div>
                     </div>
                     <div className="flex justify-between space-x-7">
                         {/* Notification Bell */}
@@ -35,7 +41,7 @@ const TopNavComponent = () => {
                             <span className="self-center">Faisal Adams</span>
                         </div>
                         {/* Logout */}
-                        <div className="flex justify-between hover:cursor-pointer">
+                        <div className="justify-between hover:cursor-pointer hidden lg:flex">
                             <LogOutIconSvg className="self-center pointer-events-none" />
                             <span className="self-center ml-1 pointer-events-none">Logout</span>
                         </div>

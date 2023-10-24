@@ -16,6 +16,7 @@ import ManagementMyPurchaseContractsDetails from "./management-purchase-contract
 import ManagementMyPurchaseContracts from "./management-purchase-contracts/management-purchase-contracts";
 import { Provider } from "react-redux";
 import { managementStore } from "../../store/management/management.store";
+import ManagementCreateNewRFQ from "./management-create-new-rfq/management-create-new-rfq";
 
 
 const ManagementRoutes = () => {
@@ -33,7 +34,7 @@ const ManagementRoutes = () => {
                     <Route path="bidders" element={<ManagementBidders />}/>
                     <Route path="/request-for-quotes">
                         <Route index element={<ManagementRequestForQuotes />}/>
-                        <Route path="create-new-rfq" />
+                        <Route path="create-new-rfq" element={<ManagementCreateNewRFQ />}/>
                         <Route path="my-requisitions/details/:rfqNo" element={<ManagementRequestForQuotesDetails />}/>
                         <Route path="team-requisitions">
                             <Route index element={<ManagementRequestForQuotesTeamRequisitions />}/>

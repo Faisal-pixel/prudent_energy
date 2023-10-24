@@ -32,6 +32,14 @@ body {
   display: inline-block !important;
   transform: translateY(0);
 }
+.tooltip-show {
+  display: none !important;
+  opacity: 0 !important;
+}
+.side-nav-link:hover .tooltip-show {
+  display: absolute !important;
+  opacity: 1 !important;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

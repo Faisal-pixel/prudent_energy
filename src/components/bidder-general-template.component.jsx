@@ -19,7 +19,7 @@ const BidderGeneralTemplateComponent = () => {
                     General
                     <ToggleOpenIcon />
                 </header>
-                    <div className={`container bg-greyLight px-4 py-0 transition-all h-0 border border-primaryBlue ${generalTemplateToggleIsOpen.bidder && "h-[100%] pt-3 overflow-visible"} space-y-3 overflow-hidden`}>
+                    <div className={`container bg-greyLight px-4 transition-all h-0 border border-primaryBlue py-3 ${generalTemplateToggleIsOpen.bidder && "h-[100%] overflow-visible"} space-y-3 overflow-hidden`}>
                         <div className="flex space-x-7">
                             <div className="flex flex-col space-y-1 basis-2/4">
                                 <label>RFQ No:</label>
