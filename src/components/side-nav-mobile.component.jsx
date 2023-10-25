@@ -8,6 +8,8 @@ import {MdBarChart} from "react-icons/md";
 import {MdPersonOutline} from "react-icons/md";
 import {MdOutlineLogout} from "react-icons/md";
 import IconTooltipComponent from "./icon-tooltip-component";
+//Images
+import profilePic from "../assets/profile.jpg";
 
 const SideNavMobileComponent = ({navigationElements}) => {
     return (
@@ -15,6 +17,10 @@ const SideNavMobileComponent = ({navigationElements}) => {
             <div className="bg-primaryBlue h-screen transition-all pt-12 px-2">
                 <div className="hidden items-center justify-center px-8 py-4 my-4 lg:flex">
                     <PrudentEnergyLogo />
+                </div>
+                <div className="group relative w-7 h-7  mb-7 -mt-6 ml-1.5 cursor-pointer">
+                    <img src={profilePic} alt="profile_pic" className="w-full h-full rounded-full pointer-events-none"/>
+                    <IconTooltipComponent tooltipText="Faisal Adams"/>
                 </div>
                 <div className="flex flex-col space-y-3">
                 {/* p-3 py-2 pr-10 rounded-md  font-bold ${navigationElement.path === location.pathname ? "bg-white text-primaryBlue" : "text-white"} */}

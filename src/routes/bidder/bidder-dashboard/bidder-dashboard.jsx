@@ -15,7 +15,7 @@ const BidderDashboard = () => {
 
             <div className="bg-white p-6 space-y-5 rounded-md">
                 <h2 className="font-bold text-primaryBlue text-lg">Activity Status</h2>
-                <div className="flex space-x-0.5 text-white">
+                <div className="flex space-x-0 md:space-x-0.5 text-white flex-wrap">
                     {
                         bidderActivityStatusData.map((data, index) => (
                             <ActivityStatus activityStatus={data} key={index}/>

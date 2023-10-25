@@ -41,7 +41,7 @@ const BidderProfile = () => {
     }
   return (
     <>
-        <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-2">
+        <div className="bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-2">
             <p className='font-bold text-primaryBlue'>Profile</p>
             <form className="py-3 space-y-2 w-full">
                 <div className="border border-[#E8E8E8] rounded">

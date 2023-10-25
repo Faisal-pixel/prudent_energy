@@ -4,6 +4,7 @@ import Greetings from "../../../components/greetings.component";
 import { useSelector } from "react-redux";
 import { selectBidderRequestForQuotesRecentBidsColumns, selectBidderRequestForQuotesRecentBidsData } from "../../../store/bidder/bidder-rfq-reducer/bidder-rfq.selector";
 import GeneralTable from "../../../components/general-table.component";
+import SearchInputComponent from "../../../components/search-input.component";
 
 const BidderRFQ = () => {
     const [searchInput, setSearchInput] = useState("")
@@ -18,18 +19,18 @@ const BidderRFQ = () => {
     ))
     
     return <>
-        <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
+        <div className="bg-secondaryBackground overflow-y-scroll h-full w-full space-y-5 px-6 pt-6">
             <div className="">
                 <Greetings />
             </div>
 
             <div className="bg-white px-3 py-4">
-                <div className="mb-3 flex justify-between">
+                <div className="mb-3 flex flex-col space-y-5 items-center shrink md:items-start md:space-y-0 md:justify-between md:flex-row">
                     <p className="text-primaryBlue font-bold text-xl">
-                        My Recent Bids
+                        Purchase Contracts
                     </p>
-                    <div className="flex space-x-6">
-                        <input placeholder="Search" onChange={onSearchChange} value={searchInput} type="search" className="border rounded-md w-[350px] border-greyDark px-2 py-0.5 focus:outline-none"/>
+                    <div className="flex space-x-6 w-full md:w-fit">
+                        <SearchInputComponent searchInput={searchInput} onSearchChange={onSearchChange}/>
                         <FilterIconSVG />
                     </div>
                 </div>

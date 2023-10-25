@@ -3,7 +3,7 @@ import {ReactComponent as PrudentEnergyLogo} from "../assets/prudent-energy-logo
 import {ReactComponent as SaphireProcureBlueLogoSvg} from "../assets/saphire_procure_blue_logo.svg";
 import {ReactComponent as NotificationSvg} from "../assets/notification.svg";
 import {ReactComponent as LogOutIconSvg} from "../assets/logout-icon.svg";
-import profilePic from "../assets/profile.jpg"
+import profilePic from "../assets/profile.jpg";
 import { useState } from "react";
 import NotificationsParentComponent from "./notifications-parent.component";
 
@@ -34,7 +34,7 @@ const TopNavComponent = () => {
                             <NotificationSvg />
                         </div>
                         {/* Profile display name and profile pic */}
-                        <div className="flex space-x-2">
+                        <div className="hidden space-x-2 lg:flex">
                             <div className="w-7 h-7 rounded-full overflow-clip">
                                 <img src={profilePic} alt="profile_pic" className="w-full h-full"/>
                             </div>
