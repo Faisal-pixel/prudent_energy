@@ -9,6 +9,7 @@ import ReactTable from "./react-table.component";
 import { ComponentContext } from "./component-context";
 import DetailsGoods from "./details-goods-template.component";
 import HtmlEditorComponent from "./html-editor.component";
+import GeneralTable from "./general-table.component";
 
 const listOfBiddersRFQ = [
     {
@@ -192,20 +193,20 @@ const DetailsServicesComponent = () => {
                 </div>
             </div>
         </Modal>
-        <div className={`container bg-greyLight px-4 transition-all h-0 border border-primaryBlue space-y-3 ${detailsTemplateToggleIsOpen && "h-[100%] py-3 overflow-visible"} space-y-3 overflow-hidden`}>
-                <div className="flex space-x-7">
-                    <div className="flex flex-col space-y-1 basis-[15%]">
+        <div className={`bg-greyLight px-4 transition-all h-0 border border-primaryBlue space-y-3 ${detailsTemplateToggleIsOpen && "h-[100%] py-3 overflow-visible"} space-y-3 overflow-hidden`}>
+                <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-7 md:flex-row">
+                    <div className="flex flex-col space-y-1 basis-1/3">
                         <label>Service Category:</label>
                         <select className="border border-greyDark rounded-md px-2 py-0.5" >
                             <option value="category1">Category 1</option>
                             <option value="category2">Category 2</option>
                         </select>
                     </div>
-                    <div className="flex flex-col space-y-1">
+                    <div className="flex flex-col space-y-1 basis-1/3">
                         <label>Expiration Duration:</label>
                         <input type="text" className="border border-greyDark rounded-md px-2 py-0.5" placeholder="Input number"/>
                     </div>
-                    <div className="flex flex-col space-y-1">
+                    <div className="flex flex-col space-y-1 basis-1/3">
                         <label>Service Category:</label>
                         <select className="border border-greyDark rounded-md px-2 py-0.5" >
                             <option value="select" disabled>Select</option>
@@ -216,7 +217,7 @@ const DetailsServicesComponent = () => {
                 </div>
                 <div className="flex space-x-7">
                     <div className="flex flex-col relative">
-                        <label className="mb-1">Scope of work</label>
+                        <label className="mb-1">Scope of work:</label>
                         {/* <textarea className="border border-greyDark rounded-md px-2 py-0.5 w-full h-24 resize-none" type="text" readOnly> </textarea> */}
                         <div id="toolbar-container" className="border border-[#ddd]"></div>
                         <HtmlEditorComponent />
@@ -225,7 +226,7 @@ const DetailsServicesComponent = () => {
                 {
                     otherGeneralTemplateRequisitionTypeSelectValue === "Goods" && <DetailsGoods />
                 }
-                    <div className="flex space-x-2">
+                    <div className="flex flex-col gap-x-2 gap-y-2 flex-wrap md:flex-row">
                         <button type="button" className="border-2 border-primaryBlue px-2 py-0.5 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Preview Template</button>
                         <button type="button" className="border-2 border-primaryBlue px-2 py-0.5 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Select all bidders</button>
                         <button type="button" className="border-2 border-primaryBlue px-2 py-0.5 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white" onClick={() => openModal("selectPreferredBidders")}>Select preferred bidders</button>
@@ -241,10 +242,10 @@ const DetailsServicesComponent = () => {
                         </div>
 
                         <div>
-                            <ReactTable columns={procurementAdminNominatedBiddersColumns} data={procurementAdminMyRequisitionsNominatedBiddersData}/>
+                            <GeneralTable columns={procurementAdminNominatedBiddersColumns} filteredData={procurementAdminMyRequisitionsNominatedBiddersData}/>
                         </div>
 
-                        <div className="flex justify-between">
+                        <div className="flex flex-col flex-wrap gap-x-4 gap-y-2 xl:justify-between md:flex-row">
                             <button type="button" className="border-2 border-primaryBlue px-6 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Reset Bidders</button>
                             <button type="button" className="border-2 border-primaryBlue px-6 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white">Notify Bidders</button>
                             <button type="button" className="border-2 border-primaryBlue px-6 rounded text-primaryBlue hover:bg-primaryBlue hover:text-white" onClick={() => openModal("reviewQuotesModal")}>Review Quotes</button>

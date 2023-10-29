@@ -9,15 +9,15 @@ const BasicRequestorMyRecentRequisitions = () => {
     const basicRequestorMyRecentRequisitionsColumn = useSelector(selectBasicRequestorMyRecentRequisitionsColumn);
     const basicRequestorMyRecentRequisitionsData = useSelector(selectBasicRequestorMyRecentRequisitionsData);
     return (
-        <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
-            <div className=" flex  justify-between">
+        <div className="bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
+            <div className=" flex flex-col justify-between space-y-4 lg:space-y-0 lg:flex-wrap lg:flex-row">
                 <Greetings />
-                <Link to="create-new-rfq" className="text-white px-4 py-1 rounded border border-primaryBlue bg-primaryBlue hover:text-primaryBlue hover:bg-white">Create New RFQ</Link>
+                <Link to="create-new-rfq" className="text-white self-start px-4 py-1 rounded border border-primaryBlue bg-primaryBlue hover:text-primaryBlue hover:bg-white">Create New RFQ</Link>
             </div>
 
             <div className="bg-white p-6 space-y-5 rounded-md">
                 <h2 className="font-bold text-primaryBlue text-lg">Activity Status</h2>
-                <div className="flex space-x-0.5 text-white">
+                <div className="flex space-x-0 md:space-x-0.5 text-white flex-wrap lg:flex-nowrap">
                     {
                         basicRequestorActivityStatusData.map((data, index) => (
                             <ActivityStatus activityStatus={data} key={index}/>

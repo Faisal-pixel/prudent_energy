@@ -18,25 +18,25 @@ const GeneralTemplate = () => {
                     General
                     <ToggleOpenIcon />
                 </header>
-                <div className={`container bg-greyLight px-4 transition-all h-0 border border-primaryBlue ${generalTemplateToggleIsOpen.other && "h-[100%] py-3 overflow-visible"} space-y-3 overflow-hidden`}>
-                    <div className="flex space-x-7">
-                        <div className="flex flex-col space-y-1">
+                <div className={`bg-greyLight px-4 transition-all h-0 border border-primaryBlue ${generalTemplateToggleIsOpen.other && "h-[100%] py-3 overflow-visible"} space-y-3 overflow-hidden`}>
+                    <div className="flex flex-col md:flex-wrap md:flex-row ">
+                        <div className="flex flex-col space-y-1 shrink-1 md:mr-3 mb-4">
                             <label>RFQ No:</label>
                             <input className="border border-greyDark rounded-md px-2 py-0.5" type="text"value={requisitionData.rfqNo} readOnly/>
                         </div>
-                        <div className="flex flex-col space-y-1">
+                        <div className="flex flex-col space-y-1 shrink-1 md:mr-3 mb-4">
                             <label>Creation Date:</label>
                             <input className="border border-greyDark rounded-md px-2 py-0.5" type="text" value="05/03/2023" readOnly/>
                         </div>
-                        <div className="flex flex-col space-y-1">
+                        <div className="flex flex-col space-y-1 shrink-1 md:mr-3 mb-4">
                             <label>Requester:</label>
                             <input className="border border-greyDark rounded-md px-2 py-0.5" type="text" value={requisitionData.requester} readOnly/>
                         </div>
-                        <div className="flex flex-col space-y-1">
+                        <div className="flex flex-col space-y-1 shrink-1 md:mr-3 mb-4">
                             <label>Business Unit:</label>
                             <input className="border border-greyDark rounded-md px-2 py-0.5" type="text" value="05/03/2023" readOnly/>
                         </div>
-                        <div className="flex flex-col space-y-1">
+                        <div className="flex flex-col space-y-1 shrink-1 md:mr-3 mb-4">
                             <label>Department:</label>
                             <input className="border border-greyDark rounded-md px-2 py-0.5" type="text" value="05/03/2023" readOnly/>
                         </div>

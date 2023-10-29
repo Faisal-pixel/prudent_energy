@@ -25,11 +25,11 @@ const BasicRequestorMyPurchaseContracts = () => {
             </div>
 
             <div className="bg-white px-3 py-4">
-                <div className="mb-3 flex justify-between">
+                <div className="mb-3 flex flex-col space-y-5 items-center shrink md:items-start md:space-y-0 md:justify-between md:flex-row">
                     <p className="text-primaryBlue font-bold text-xl">
                         Purchase Contracts
                     </p>
-                    <div className="flex space-x-6">
+                    <div className="flex space-x-6 w-full md:w-fit">
                         <SearchInputComponent searchInput={searchInput} onSearchChange={onSearchChange}/>
                         <FilterIconSVG />
                     </div>

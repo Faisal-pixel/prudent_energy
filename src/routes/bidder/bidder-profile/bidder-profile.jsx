@@ -47,7 +47,7 @@ const BidderProfile = () => {
                 <div className="border border-[#E8E8E8] rounded">
                     <h3 className="px-3 py-2 bg-[#E8E8E8] font-bold text-lg">Business Details</h3>
                     <div className="px-3 py-2">
-                        <div className="flex space-x-4">
+                        <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row">
                             <div className="space-y-1 flex flex-col basis-1/2">
                                 <label>Business Name</label>
                                 <input type="text" name="businessName" onChange={(e) => handleOnChange(e, "businessDetails")} placeholder="Business Name" className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
@@ -57,7 +57,7 @@ const BidderProfile = () => {
                                 <input type="text" name="businessEmail" onChange={(e) => handleOnChange(e, "businessDetails")} placeholder="Business Email" className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
                             </div>
                         </div>
-                        <div className="flex space-x-4">
+                        <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row">
                             <div className="space-y-1 flex flex-col basis-1/2">
                                 <label>Business Address</label>
                                 <input type="text" name="businessAddress" onChange={(e) => handleOnChange(e, "businessDetails")} placeholder="Business Address" className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
@@ -67,7 +67,7 @@ const BidderProfile = () => {
                                 <input type="text" placeholder="State" name="state" onChange={(e) => handleOnChange(e, "businessDetails")} className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
                             </div>
                         </div>
-                        <div className="flex space-x-4">
+                        <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row">
                             <div className="space-y-1 flex flex-col basis-1/2">
                                 <label>Contact Person Name</label>
                                 <input type="text" name="contactPersonName" onChange={(e) => handleOnChange(e, "businessDetails")} placeholder="Contact Person Name" className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
@@ -77,7 +77,7 @@ const BidderProfile = () => {
                                 <input type="text" placeholder="Incorporation Date" name="incorporationDate" onChange={(e) => handleOnChange(e, "businessDetails")} className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
                             </div>
                         </div>
-                        <div className="flex space-x-4">
+                        <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row">
                             <div className="space-y-1 flex flex-col basis-1/2">
                                 <label>CAC Number</label>
                                 <input type="text" name="cacNumber" onChange={(e) => handleOnChange(e, "businessDetails")} placeholder="cacNumber" className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
@@ -87,7 +87,7 @@ const BidderProfile = () => {
                                 <input type="text" placeholder="Enter TIN Number" name="tinNumber" onChange={(e) => handleOnChange(e, "businessDetails")} className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
                             </div>
                         </div>
-                        <div className="flex space-x-4">
+                        <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row">
                             <div className="space-y-1 flex flex-col basis-1/2">
                                 <label>Payment Term Code</label>
                                 <input type="text" name="paymentTermCode" onChange={(e) => handleOnChange(e, "businessDetails")} placeholder="Payment Term Code" className="border border-grey[#E8E8E8] rounded-md px-2 py-1 placeholder:text-greyDark"/>
@@ -113,23 +113,23 @@ const BidderProfile = () => {
                                 </select>
                             </div>
                         </div>
-                        <div className="flex justify-between pl-3">
-                            <div className="space-x-6 flex">
+                        <div className="flex justify-between pl-3 flex-wrap">
+                            <div className="space-x-6 flex mb-3 lg:mb-0">
                                 <label className="w-14">Insurance</label>
                                 <span>- - - - - - - - -</span>
                                 <FontAwesomeIcon data-icon-name="insurance" icon={createNewBidderFormValues.serviceCategories.insurance ? faToggleOn : faToggleOff} onClick={(e) => handleToggleOnClick(e, "serviceCategories")} className="self-center text-2xl text-[#227CBF] cursor-pointer"/>
                             </div>
-                            <div className="space-x-6 flex">
+                            <div className="space-x-6 flex mb-3 lg:mb-0">
                                 <label className="w-14">Freight</label>
                                 <span>- - - - - - - - -</span>
                                 <FontAwesomeIcon data-icon-name="freight" icon={createNewBidderFormValues.serviceCategories.freight ? faToggleOn : faToggleOff} onClick={(e) => handleToggleOnClick(e, "serviceCategories")} className="self-center text-2xl text-[#227CBF] cursor-pointer"/>
                             </div>
-                            <div className="space-x-6 flex">
+                            <div className="space-x-6 flex mb-3 lg:mb-0">
                                 <label className="w-14">Agency</label>
                                 <span>- - - - - - - - -</span>
                                 <FontAwesomeIcon data-icon-name="agency" icon={createNewBidderFormValues.serviceCategories.agency ? faToggleOn : faToggleOff} onClick={(e) => handleToggleOnClick(e, "serviceCategories")} className="self-center text-2xl text-[#227CBF] cursor-pointer"/>
                             </div>
-                            <div className="space-x-6 flex">
+                            <div className="space-x-6 flex mb-3 lg:mb-0">
                                 <label className="w-14">Storage</label>
                                 <span>- - - - - - - - -</span>
                                 <FontAwesomeIcon data-icon-name="storage" icon={createNewBidderFormValues.serviceCategories.storage ? faToggleOn : faToggleOff} onClick={(e) => handleToggleOnClick(e, "serviceCategories")} className="self-center text-2xl text-[#227CBF] cursor-pointer"/>
@@ -140,7 +140,7 @@ const BidderProfile = () => {
                 <div className="border border-[#E8E8E8] rounded">
                     <h3 className="px-3 py-2 bg-[#E8E8E8] font-bold text-lg">Documents</h3>
                     <div className="px-3 py-2">
-                        <div className="flex space-x-4">
+                        <div className="flex flex-col space-y-4 md:space-x-4 md:space-y-0 md:flex-row">
                             <div className="space-y-2 flex flex-col basis-1/2">
                                 <p>CAC Registration Certificate</p>
                                 <div className='flex '>
@@ -164,7 +164,7 @@ const BidderProfile = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex space-x-4">
+                        <div className="flex flex-col space-y-4 md:space-x-4 md:space-y-0 md:flex-row">
                             <div className="space-y-2 flex flex-col basis-1/2">
                                 <p>Evidence of Tax Remittance</p>
                                 <div className='flex '>

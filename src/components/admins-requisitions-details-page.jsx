@@ -9,7 +9,7 @@ const AdminRequisitionsDetailsPageComponent = () => {
         navigate(-1)
     }
     return <>
-        <div className="container h-full overflow-y-auto px-5 pt-6 pb-5 flex flex-col space-y-5">
+        <div className="h-full overflow-y-auto px-5 pt-6 pb-5 flex flex-col space-y-5">
             {/* BreadCrumbsNavigation */}
             <div className="flex space-x-3 text-sm">
                 <span onClick={handleClick} className="text-greyDark hover:cursor-pointer">Dashboard</span>

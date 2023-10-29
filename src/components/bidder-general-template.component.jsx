@@ -19,26 +19,26 @@ const BidderGeneralTemplateComponent = () => {
                     General
                     <ToggleOpenIcon />
                 </header>
-                    <div className={`container bg-greyLight px-4 transition-all h-0 border border-primaryBlue py-3 ${generalTemplateToggleIsOpen.bidder && "h-[100%] overflow-visible"} space-y-3 overflow-hidden`}>
-                        <div className="flex space-x-7">
-                            <div className="flex flex-col space-y-1 basis-2/4">
+                    <div className={`bg-greyLight px-4 transition-all h-0 border border-primaryBlue ${generalTemplateToggleIsOpen.bidder && "h-[100%] py-3 overflow-visible"} space-y-3 overflow-hidden`}>
+                        <div className="flex flex-col space-y-4 md:space-y-0 custom_970:space-x-7 md:flex-row md:flex-wrap custom_970:flex-nowrap">
+                            <div className="flex flex-col space-y-1 basis-1/4  flex-1 md:mr-7 md:mb-4 custom_970:mr-0 custom_970:mb-0">
                                 <label>RFQ No:</label>
                                 <input className="border border-greyDark rounded-md px-2 py-0.5" type="text"value={"RFQ21547"} readOnly/>
                             </div>
-                            <div className="flex flex-col space-y-1 basis-2/4">
+                            <div className="flex flex-col space-y-1 basis-1/4  flex-1 md:mr-7 md:mb-4 custom_970:mr-0 custom_970:mb-0">
                                 <label>Creation Date:</label>
                                 <input className="border border-greyDark rounded-md px-2 py-0.5" type="text" value="05/03/2023" readOnly/>
                             </div>
-                            <div className="flex flex-col space-y-1 basis-2/4">
+                            <div className="flex flex-col space-y-1 basis-1/4  flex-1 md:mr-7 md:mb-4 custom_970:mr-0 custom_970:mb-0">
                                 <label>Type:</label>
                                 <input className="border border-greyDark rounded-md px-2 py-0.5" type="text" value={"Goods"} readOnly/>
                             </div>
-                            <div className='basis-2/3 flex flex-col justify-center'>
+                            <div className='basis-1/4 custom_970:basis-2/3 flex flex-col justify-center flex-1'>
                                 <p className="text-primaryBlue text-sm"> Expiration Date & Time: 06/03/2023; 12:53:00 GMT+1</p>
                                 <p className="text-[#FF0000] text-sm">Expiration Countdown: 00:00:03 Hours</p>
                             </div>
                         </div>
-                        <div className="flex space-x-4">
+                        <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-4 md:flex-row">
                             <div className="w-full space-y-2">
                                 <label>Company Overview:</label>
                                 <div className="border border-greyDark round-md h-28 rounded-md overflow-y-auto px-2 py-1"></div>

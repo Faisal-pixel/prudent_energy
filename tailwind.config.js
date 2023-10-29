@@ -19,6 +19,9 @@ module.exports = {
       transitionProperty: {
         "height": "height",
         "oveflow": "overflow"
+      },
+      screens: {
+        custom_970: "970px"
       }
     },
   },

@@ -92,7 +92,7 @@ const BidderRfqResponseComponent = () => {
                     RFQ Response
                     <ToggleOpenIcon />
                 </header>
-                    <div className={`container bg-greyLight px-4 py-0 transition-all h-0 border border-primaryBlue ${bidderRFQResponseTemplateToggleIsOpen && "h-[100%] pt-3 overflow-visible"} space-y-3 overflow-hidden`}>
+                    <div className={`bg-greyLight px-4 py-0 transition-all h-0 border border-primaryBlue ${bidderRFQResponseTemplateToggleIsOpen && "h-[100%] py-3 overflow-visible"} space-y-3 overflow-hidden`}>
                         <div className="flex space-x-7">
                             <div className="flex flex-col space-y-1 basis-full">
                                 <label>Specifications:</label>
@@ -116,23 +116,23 @@ const BidderRfqResponseComponent = () => {
                         </DataGrid>
                         </div>
                         <div className="space-y-4">
-                            <div className="flex space-x-2">
-                                <div className='flex flex-col space-y-2'>
+                            <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-2  md:flex-row">
+                                <div className='flex flex-col basis-1/4 space-y-2 flex-1'>
                                     <label>Expected Delivery Timeline:</label>
                                     <input className="border border-greyDark rounded-md px-2 py-0.5" type="text"value={""} placeholder='Input number'/>    
                                 </div>
-                                <div className='self-end'>
-                                    <select className='border border-greyDark rounded-md px-3 py-0.5'>
+                                <div className='basis-1/4 flex-1 md:self-end'>
+                                    <select className='border border-greyDark rounded-md w-full px-3 py-0.5'>
                                         <option value="" className='pr-3'>Select</option>
                                         <option value="days" className='pr-3'>Days</option>
                                         <option value="hours" className='pr-3'>Hours</option>
                                     </select>
                                 </div>
-                                <div className='flex flex-col space-y-2'>
+                                <div className='flex flex-col basis-1/4 space-y-2 flex-1'>
                                     <label>Payment Terms (Days):</label>
                                     <input className="border border-greyDark rounded-md px-2 py-0.5" type="text" value={""} placeholder='Input numbers'/>    
                                 </div>
-                                <div className='flex flex-col space-y-2'>
+                                <div className='flex flex-col basis-1/4 space-y-2 flex-1'>
                                     <label>Price Validity Period (Days):</label>
                                     <input className="border border-greyDark rounded-md px-2 py-0.5" type="text" value={""} placeholder='Input numbers'/>    
                                 </div>

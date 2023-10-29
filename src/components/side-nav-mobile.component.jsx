@@ -2,11 +2,13 @@ import {ReactComponent as PrudentEnergyLogo} from "../assets/prudent_energy_logo
 import {NavLink, Outlet} from "react-router-dom";
 import {LuLayoutDashboard} from "react-icons/lu";
 import {FaQuestion} from "react-icons/fa6";
+import {FaHandHoldingDollar} from "react-icons/fa6";
 import {MdOutlineDescription} from "react-icons/md";
 import {IoMdCheckboxOutline} from "react-icons/io";
 import {MdBarChart} from "react-icons/md";
 import {MdPersonOutline} from "react-icons/md";
 import {MdOutlineLogout} from "react-icons/md";
+import {RiTeamFill} from "react-icons/ri";
 import IconTooltipComponent from "./icon-tooltip-component";
 //Images
 import profilePic from "../assets/profile.jpg";
@@ -31,7 +33,16 @@ const SideNavMobileComponent = ({navigationElements}) => {
                                 return ( isActive ? "bg-white text-primaryBlue px-2 py-2 rounded-md font-bold group relative" : "px-2 py-2 rounded-md font-bold text-white group relative" )}
                                 }> 
                                     {
-                                        navigationElement.navigationName === "Dashboard" ? <LuLayoutDashboard className="h-6 w-6"/> : navigationElement.navigationName === "Request for Quotes" ? <FaQuestion className="h-6 w-6"/> : navigationElement.navigationName === "Purchase Contracts" ? <MdOutlineDescription className="h-6 w-6"/> : navigationElement.navigationName === "Issue Resolution" ? <IoMdCheckboxOutline className="h-6 w-6"/> : navigationElement.navigationName === "Report" ? <MdBarChart className="h-6 w-6"/> : navigationElement.navigationName === "Profile" ? <MdPersonOutline className="h-6 w-6"/>  : null
+                                        navigationElement.navigationName === "Dashboard" ? <LuLayoutDashboard className="h-6 w-6"/> 
+                                        : navigationElement.navigationName === "Request for Quotes" ? <FaQuestion className="h-6 w-6"/> 
+                                        : navigationElement.navigationName === "Purchase Contracts"
+                                        || navigationElement.navigationName === "My Purchase Contracts" ? <MdOutlineDescription className="h-6 w-6"/> 
+                                        : navigationElement.navigationName === "Issue Resolution" ? <IoMdCheckboxOutline className="h-6 w-6"/> 
+                                        : navigationElement.navigationName === "Report" ? <MdBarChart className="h-6 w-6"/> 
+                                        : navigationElement.navigationName === "Profile" ? <MdPersonOutline className="h-6 w-6"/>  
+                                        : navigationElement.navigationName === "My Requisitions" ? <FaHandHoldingDollar className="h-6 w-6"/>
+                                        : navigationElement.navigationName === "Team Requisitions" ? <RiTeamFill className="h-6 w-6"/>
+                                        : null
                                     }
                                     <IconTooltipComponent tooltipText={navigationElement.navigationName}/>
                             </NavLink>

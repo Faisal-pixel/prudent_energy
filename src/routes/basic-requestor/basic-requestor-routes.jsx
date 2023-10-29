@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import SideNavComponent from "../../components/side-nav.component"
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import TopNavComponent from "../../components/top-nav.component";
 import { BasicRequestorContext } from "./context/basic-requestor-context";
 import BasicRequestorMyRecentRequisitions from "./basic-requestor-my-requisitions/basic-requestor-my-requisitions";
@@ -12,13 +12,28 @@ import BasicRequestorMyPurchaseContractsDetails from "./basic-requestor-my-purch
 import BasicRequestorCreateNewRFQ from "./basic-requestor-admin-create-new-rfq/basic-requestor-admin-create-new-rfq";
 import { Provider } from "react-redux";
 import { basicRequestorStore } from "../../store/basic-requestor/basic-requestor.store";
+import SideNavMobileComponent from "../../components/side-nav-mobile.component";
 
 const BasicRequestorRoutes = () => {
-    const {basicRequestorNavigations} = useContext(BasicRequestorContext)
+    const {basicRequestorNavigations} = useContext(BasicRequestorContext);
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+          setScreenWidth(window.innerWidth);
+        }
+
+        // Attach the event listener when the component mounts
+        window.addEventListener('resize', handleResize);
+    
+        // Clean up the event listener when the component unmounts
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
     return (
         <Provider store={basicRequestorStore}>
             <Routes>
-            <Route path="/" element={<SideNavComponent navigationElements={basicRequestorNavigations}/>}>
+            <Route path="/" element={screenWidth < 1024 ? <SideNavMobileComponent navigationElements={basicRequestorNavigations}/> : <SideNavComponent navigationElements={basicRequestorNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
                     <Route path="my-requisitions">
