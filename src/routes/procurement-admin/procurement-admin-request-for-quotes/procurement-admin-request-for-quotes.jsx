@@ -36,8 +36,8 @@ const ProcurementAdminRequestForQuotes = () => {
             <UnderlinedNav navigationElements={procurementAdminRequestForQuotesUnderlinedNavigations} includeButton={"Create New RFQ"} handleButtonClick={handleButtonClick} />
 
             <div className="bg-white px-3 py-4">
-                <div className="flex justify-between">
-                    <p className="text-primaryBlue font-bold text-xl">
+                <div className="flex flex-col justify-between gap-4 sm:flex-row">
+                    <p className="text-primaryBlue font-bold text-xl self-center sm:self-start">
                         My Requisitions
                     </p>
                     <div className="flex space-x-6">

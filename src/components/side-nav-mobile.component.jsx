@@ -9,6 +9,9 @@ import {MdBarChart} from "react-icons/md";
 import {MdPersonOutline} from "react-icons/md";
 import {MdOutlineLogout} from "react-icons/md";
 import {RiTeamFill} from "react-icons/ri";
+import {FiSettings} from "react-icons/fi";
+import {BsPeople} from "react-icons/bs";
+import {BsFileEarmarkBarGraph} from "react-icons/bs";
 import IconTooltipComponent from "./icon-tooltip-component";
 //Images
 import profilePic from "../assets/profile.jpg";
@@ -35,8 +38,11 @@ const SideNavMobileComponent = ({navigationElements}) => {
                                     {
                                         navigationElement.navigationName === "Dashboard" ? <LuLayoutDashboard className="h-6 w-6"/> 
                                         : navigationElement.navigationName === "Request for Quotes" ? <FaQuestion className="h-6 w-6"/> 
+                                        : navigationElement.navigationName === "Settings" ? <FiSettings className="h-6 w-6"/> 
+                                        : navigationElement.navigationName === "Bidders" ? <BsPeople className="h-6 w-6"/> 
                                         : navigationElement.navigationName === "Purchase Contracts"
-                                        || navigationElement.navigationName === "My Purchase Contracts" ? <MdOutlineDescription className="h-6 w-6"/> 
+                                        || navigationElement.navigationName === "My Purchase Contracts" ? <BsFileEarmarkBarGraph className="h-6 w-6"/> 
+                                        : navigationElement.navigationName === "Purchase Documents" ? <MdOutlineDescription className="h-6 w-6"/> 
                                         : navigationElement.navigationName === "Issue Resolution" ? <IoMdCheckboxOutline className="h-6 w-6"/> 
                                         : navigationElement.navigationName === "Report" ? <MdBarChart className="h-6 w-6"/> 
                                         : navigationElement.navigationName === "Profile" ? <MdPersonOutline className="h-6 w-6"/>  

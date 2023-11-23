@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import SideNavComponent from "../../components/side-nav.component";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProcurementAdminContext } from "./context/procurement-admin.context";
 import TopNavComponent from "../../components/top-nav.component";
 import ProcurementAdminDashboard from "./procurement-admin-dashboard/procurement-admin-dashboard";
@@ -20,14 +20,29 @@ import ProcurementAdminMyPurchaseContracts from "./procurement-admin-purchase-co
 import ProcurementAdminMyPurchaseContractsDetails from "./procurement-admin-purchase-contracts/procurement-admin-purchase-contracts-details";
 import { Provider } from "react-redux";
 import { procurementAdminStore } from "../../store/procurement-admin/procurement-admin.store";
+import SideNavMobileComponent from "../../components/side-nav-mobile.component";
 
 
 const ProcurementAdminRoutes = () => {
-    const { procurementAdminNavigations } = useContext(ProcurementAdminContext)
+    const { procurementAdminNavigations } = useContext(ProcurementAdminContext);
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+          setScreenWidth(window.innerWidth);
+        }
+
+        // Attach the event listener when the component mounts
+        window.addEventListener('resize', handleResize);
+    
+        // Clean up the event listener when the component unmounts
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
     return (
         <Provider store={procurementAdminStore}>
             <Routes>
-            <Route path="/" element={<SideNavComponent navigationElements={procurementAdminNavigations}/>}>
+            <Route path="/" element={screenWidth < 1024 ? <SideNavMobileComponent navigationElements={procurementAdminNavigations}/> : <SideNavComponent navigationElements={procurementAdminNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
                     <Route path="dashboard/">

@@ -17,7 +17,6 @@ const GeneralTable = ({filteredData, columns, clickable}) => {
     const handleRowClick = useCallback((row) => {
         const rowData = row.data;
         const values = row.values;
-        console.log(values)
         navigate(`${clickable}/${values[0]}`, {state: {rowData}});
       }, [navigate, clickable]);
     return <>

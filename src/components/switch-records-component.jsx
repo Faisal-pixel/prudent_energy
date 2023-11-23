@@ -9,7 +9,7 @@ const SwitchRecords = () => {
         setSwitchRecords( recordName === "myRecords" ? {"myRecords": true, "allRecords": false} : {"myRecords": false, "allRecords": true})
     }
     return <>
-        <div className="flex space-x-2 shadow-sm bg-white rounded py-2 px-1">
+        <div className="flex space-x-2 shadow-sm bg-white rounded py-2 px-1 w-max">
                     <div onClick={() => handleClick("myRecords")} className={`${switchRecords.myRecords && "bg-primaryBlue text-white"} p-1 rounded cursor-pointer`}>
                         My Records
                     </div>

@@ -1,16 +1,17 @@
-import { useEffect, useState } from "react";
-import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
-import SearchInputComponent from "../../../components/search-input.component";
-import Greetings from "../../../components/greetings.component";
+import { useEffect } from "react";
+// import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
+// import SearchInputComponent from "../../../components/search-input.component";
+// import Greetings from "../../../components/greetings.component";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProcurementAdminPurchaseContractsColumn, selectProcurementAdminPurchaseContractsData, selectProcurementAdminPurchaseContractsStatus } from "../../../store/procurement-admin/procurement-admin-purchase-contracts/procurement-admin-purchase-contracts.selector";
-import GeneralTable from "../../../components/general-table.component";
+// import GeneralTable from "../../../components/general-table.component";
 import { fetchProcurementAdminPurchaseContracts } from "../../../store/procurement-admin/procurement-admin-purchase-contracts/procurement_admin_purchase_contracts.thunk_actions";
+import PurchaseContractTemplateComponent from "../../../components/purchase-contract-template.component";
 
 
 const ProcurementAdminMyPurchaseContracts = () => {
     const dispatch = useDispatch()
-    const [searchInput, setSearchInput] = useState("")
+    // const [searchInput, setSearchInput] = useState("")
     const procurementAdminPurchaseContractsColumns = useSelector(selectProcurementAdminPurchaseContractsColumn);
     const procurementAdminPurchaseContractsData = useSelector(selectProcurementAdminPurchaseContractsData);
     const procurementAdminPurchaseContractsStatus = useSelector(selectProcurementAdminPurchaseContractsStatus);
@@ -19,16 +20,16 @@ const ProcurementAdminMyPurchaseContracts = () => {
             dispatch(fetchProcurementAdminPurchaseContracts())
         }
     }, [procurementAdminPurchaseContractsStatus, dispatch])
-    const onSearchChange = (e) => {
-        const searchInput = e.target.value;
-        setSearchInput(searchInput);
-    }
-    const filteredPurchaseContractsData = procurementAdminPurchaseContractsData.filter((bid) => (
-        bid.id.toLowerCase().includes(searchInput.toLowerCase()) || bid.description.toLowerCase().includes(searchInput.toLowerCase())  || bid.creationDateTime.toLowerCase().includes(searchInput.toLowerCase())
-    ))
+    // const onSearchChange = (e) => {
+    //     const searchInput = e.target.value;
+    //     setSearchInput(searchInput);
+    // }
+    // const filteredPurchaseContractsData = procurementAdminPurchaseContractsData.filter((bid) => (
+    //     bid.id.toLowerCase().includes(searchInput.toLowerCase()) || bid.description.toLowerCase().includes(searchInput.toLowerCase())  || bid.creationDateTime.toLowerCase().includes(searchInput.toLowerCase())
+    // ))
     
     return <>
-        <div className="container bg-secondaryBackground space-y-5 px-6 pt-6">
+        {/* <div className="container bg-secondaryBackground space-y-5 px-6 pt-6">
             <div className="">
                 <Greetings />
             </div>
@@ -45,7 +46,8 @@ const ProcurementAdminMyPurchaseContracts = () => {
                 </div>
                 <GeneralTable columns={procurementAdminPurchaseContractsColumns} filteredData={filteredPurchaseContractsData} clickable={"details"}/>
             </div>
-        </div>
+        </div> */}
+        <PurchaseContractTemplateComponent incomingData={procurementAdminPurchaseContractsData} usingApi incomingColumn={procurementAdminPurchaseContractsColumns}/>
     </>
 }
 

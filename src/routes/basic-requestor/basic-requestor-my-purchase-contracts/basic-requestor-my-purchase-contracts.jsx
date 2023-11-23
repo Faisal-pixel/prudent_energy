@@ -1,25 +1,26 @@
-import { useState } from "react";
-import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
-import SearchInputComponent from "../../../components/search-input.component";
-import Greetings from "../../../components/greetings.component";
+// import { useState } from "react";
+// import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg"
+// import SearchInputComponent from "../../../components/search-input.component";
+// import Greetings from "../../../components/greetings.component";
 import { selectBasicRequestorPurchaseContractsData } from "../../../store/basic-requestor/basic-requestor-purchase-contracts/basic-requestor-purchase-contracts.selector";
 import { useSelector } from "react-redux";
-import PurchaseContractsTables from "../../../components/purchase-contracts-table";
+// import PurchaseContractsTables from "../../../components/purchase-contracts-table";
+import PurchaseContractTemplateComponent from "../../../components/purchase-contract-template.component";
 
 
 const BasicRequestorMyPurchaseContracts = () => {
-    const [searchInput, setSearchInput] = useState("")
+    // const [searchInput, setSearchInput] = useState("")
     const basicRequestorPurchaseContractsData = useSelector(selectBasicRequestorPurchaseContractsData);
-    const onSearchChange = (e) => {
-        const searchInput = e.target.value;
-        setSearchInput(searchInput);
-    }
-    const filteredPurchaseContractsData = basicRequestorPurchaseContractsData.filter((bid) => (
-        bid.contractNo.toLowerCase().includes(searchInput.toLowerCase()) || bid.description.toLowerCase().includes(searchInput.toLowerCase())  || bid.contractDateAndTime.toLowerCase().includes(searchInput.toLowerCase())
-    ))
+    // const onSearchChange = (e) => {
+    //     const searchInput = e.target.value;
+    //     setSearchInput(searchInput);
+    // }
+    // const filteredPurchaseContractsData = basicRequestorPurchaseContractsData.filter((bid) => (
+    //     bid.contractNo.toLowerCase().includes(searchInput.toLowerCase()) || bid.description.toLowerCase().includes(searchInput.toLowerCase())  || bid.contractDateAndTime.toLowerCase().includes(searchInput.toLowerCase())
+    // ))
     
     return <>
-        <div className="container bg-secondaryBackground space-y-5 px-6 pt-6">
+        {/* <div className="bg-secondaryBackground space-y-5 px-6 pt-6">
             <div className="">
                 <Greetings />
             </div>
@@ -36,7 +37,8 @@ const BasicRequestorMyPurchaseContracts = () => {
                 </div>
                 <PurchaseContractsTables filteredData={filteredPurchaseContractsData}/>
             </div>
-        </div>
+        </div> */}
+        <PurchaseContractTemplateComponent incomingData={basicRequestorPurchaseContractsData} />
     </>
 }
 

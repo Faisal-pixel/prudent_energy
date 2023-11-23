@@ -1,6 +1,5 @@
 import { useState, } from "react";
 import Greetings from "../../../components/greetings.component";
-import ReactTable from "../../../components/react-table.component";
 import UnderlinedNav from "../../../components/underlined-nav.component";
 import SearchInputComponent from "../../../components/search-input.component";
 import {ReactComponent as FilterIconSVG} from "../../../assets/filter-icon.svg";
@@ -31,8 +30,8 @@ const ProcurementAdminRequestForQuotesTeamRequisitions = () => {
             <UnderlinedNav navigationElements={procurementAdminRequestForQuotesUnderlinedNavigations} />
 
             <div className="bg-white px-3 py-4">
-                <div className="flex justify-between">
-                    <p className="text-primaryBlue font-bold text-xl">
+                <div className="flex flex-col justify-between gap-4 sm:flex-row">
+                    <p className="text-primaryBlue font-bold text-xl self-center sm:self-start">
                         My Requisitions
                     </p>
                     <div className="flex space-x-6">

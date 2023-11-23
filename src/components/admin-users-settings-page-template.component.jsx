@@ -1,34 +1,21 @@
-import { useEffect, } from "react";
-// import UnderlinedNav from "../../../components/underlined-nav.component";
-// import Modal from "../../../components/modal";
-// import {ReactComponent as XButtonSVG} from "../../../assets/x-button-icon.svg";
-// import Greetings from "../../../components/greetings.component";
-import { useDispatch, useSelector } from "react-redux";
-import { selectProcurementAdminAdminUsersColumns, selectProcurementAdminAdminUsersData, selectProcurementAdminAdminUsersStatus, selectProcurementAdminSettingsUnderlinedNavigations } from "../../../store/procurement-admin/procurement-admin-settings/procurement-admin-settings.selector";
-// import GeneralTable from "../../../components/general-table.component";
-import { fetchProcurementAdminSettingsAdminUsers } from "../../../store/procurement-admin/procurement-admin-settings/procurement_admin_settings.thunk_actions";
-import AdminUsersSettingsPageTemplateComponent from "../../../components/admin-users-settings-page-template.component";
-const ProcurementAdminSettingsAdminUsers = () => {
-    const dispatch = useDispatch();
-    const procurementAdminAdminUsersColumns = useSelector(selectProcurementAdminAdminUsersColumns)
-    const procurementAdminAdminUsersData = useSelector(selectProcurementAdminAdminUsersData);
-    const procurementAdminSettingsUnderlinedNavigations = useSelector(selectProcurementAdminSettingsUnderlinedNavigations);
-    const procurementAdminAdminUsersStatus = useSelector(selectProcurementAdminAdminUsersStatus);
-    useEffect(() => {
-        if(procurementAdminAdminUsersStatus === "idle") {
-            dispatch(fetchProcurementAdminSettingsAdminUsers())
-        }
-    }, [procurementAdminAdminUsersStatus, dispatch])
-    
-    // const [addNewUserModalIsOpen, setAddNewUserModalIsOpen] = useState(false);
-    // const handleAddNewUserModal = () => {
-    //     setAddNewUserModalIsOpen(!addNewUserModalIsOpen);
-    // }
-    return <>
-        {/* <Modal isOpen={addNewUserModalIsOpen} onClose={handleAddNewUserModal} noPadding>
-            <div className="w-[900px] space-y-2 pb-3">
-                <div className="container px-4 py-1 bg-[#E8E8E8] rounded-t-lg flex">User Details <XButtonSVG className="inline ml-auto cursor-pointer self-center" onClick={handleAddNewUserModal}/></div>
-                <div className="container px-4 py-1 flex space-x-5">
+import React, { useState } from 'react'
+import Modal from './modal';
+import GeneralTable from './general-table.component';
+import UnderlinedNav from './underlined-nav.component';
+import Greetings from './greetings.component';
+
+import {ReactComponent as XButtonSVG} from "../assets/x-button-icon.svg";
+
+const AdminUsersSettingsPageTemplateComponent = ({underlinedNavigations, incomingColumns, incomingData}) => {
+  const [addNewUserModalIsOpen, setAddNewUserModalIsOpen] = useState(false);
+    const handleAddNewUserModal = () => {
+        setAddNewUserModalIsOpen(!addNewUserModalIsOpen);
+    }
+  return <>
+    <Modal isOpen={addNewUserModalIsOpen} onClose={handleAddNewUserModal} noPadding>
+            <div className=" space-y-2 pb-3">
+                <div className="px-4 py-1 bg-[#E8E8E8] rounded-t-lg flex">User Details <XButtonSVG className="inline ml-auto cursor-pointer self-center" onClick={handleAddNewUserModal}/></div>
+                <div className="px-4 py-1 flex flex-col gap-x-5 gap-y-2 md:flex-row">
                     <div className="flex flex-col space-y-1 basis-1/3">
                         <label className="text-sm">First Name</label>
                         <input className="border border-[#E8E8E8] rounded px-2 py-1 placeholder:text-greyDark placeholder:text-sm" type="text" placeholder="First name"/>
@@ -42,7 +29,7 @@ const ProcurementAdminSettingsAdminUsers = () => {
                         <input className="border border-[#E8E8E8] rounded px-2 py-1 placeholder:text-greyDark placeholder:text-sm" type="text" placeholder="Job Title"/>
                     </div>
                 </div>
-                <div className="container px-4 py-1 flex space-x-5">
+                <div className="px-4 py-1 flex flex-col gap-x-5 gap-y-2 md:flex-row">
                     <div className="flex flex-col space-y-1 basis-1/3">
                         <label className="text-sm">Email Address</label>
                         <input className="border border-[#E8E8E8] rounded px-2 py-1 placeholder:text-greyDark placeholder:text-sm" type="email" placeholder="Email"/>
@@ -65,30 +52,29 @@ const ProcurementAdminSettingsAdminUsers = () => {
                         </select>
                     </div>
                 </div>
-                <div className="container px-4 py-1 flex flex-col space-y-1">
+                <div className="px-4 py-1 flex flex-col space-y-1">
                     <label>Address</label>
                     <input type="text" className="border border-[#E8E8E8] rounded px-2 py-1 placeholder:text-greyDark placeholder:text-sm" placeholder="Addres"/>
                 </div>
-                <div className="container px-4 py-1 flex">
+                <div className="px-4 py-1 flex">
                     <button type="submit" className="bg-primaryBlue text-white border border-primaryBlue px-10 hover:bg-white hover:text-primaryBlue rounded ml-auto">Submit</button>
                 </div>
             </div>
         </Modal>
-        <div className="container bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
+        <div className="bg-secondaryBackground overflow-y-scroll space-y-5 px-6 pt-6">
             <div className="flex justify-between">
                 <Greetings />
             </div>
 
-            <UnderlinedNav navigationElements={procurementAdminSettingsUnderlinedNavigations} includeButton={"Add new user"} handleButtonClick={handleAddNewUserModal}/>
+            <UnderlinedNav navigationElements={underlinedNavigations} includeButton={"Add new user"} handleButtonClick={handleAddNewUserModal}/>
 
             <div className="bg-white px-3 py-4">
                 
-                <GeneralTable columns={procurementAdminAdminUsersColumns} filteredData={procurementAdminAdminUsersData}/>
+                <GeneralTable columns={incomingColumns} filteredData={incomingData}/>
             </div>
             
-        </div> */}
-        <AdminUsersSettingsPageTemplateComponent underlinedNavigations={procurementAdminSettingsUnderlinedNavigations} incomingColumns={procurementAdminAdminUsersColumns} incomingData={procurementAdminAdminUsersData}/>
+        </div>
     </>
 }
 
-export default ProcurementAdminSettingsAdminUsers;
+export default AdminUsersSettingsPageTemplateComponent;

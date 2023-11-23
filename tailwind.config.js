@@ -21,7 +21,9 @@ module.exports = {
         "oveflow": "overflow"
       },
       screens: {
-        custom_970: "970px"
+        custom_970: "970px",
+        custom_1150: "1150px",
+        custom_1025: "1025px"
       }
     },
   },

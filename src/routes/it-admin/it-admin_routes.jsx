@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import SideNavComponent from "../../components/side-nav.component";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ITAdminContext} from "./context/it-admin.context";
 import TopNavComponent from "../../components/top-nav.component";
 import UnderlinedNav from "../../components/underlined-nav.component";
@@ -22,14 +22,29 @@ import ITAdminMyPurchaseContracts from "./it-admin-purchase-contracts/it-admin-p
 import ITAdminMyPurchaseContractsDetails from "./it-admin-purchase-contracts/it-admin-purchase-contracts-details";
 import { Provider } from "react-redux";
 import { itAdminStore } from "../../store/it-admin/it-admin.store";
+import SideNavMobileComponent from "../../components/side-nav-mobile.component";
 
 
 const ITAdminRoutes = () => {
-    const {itAdminNavigations, itAdminSettingsUnderlinedNavigations} = useContext(ITAdminContext)
+    const {itAdminNavigations, itAdminSettingsUnderlinedNavigations} = useContext(ITAdminContext);
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        function handleResize() {
+          setScreenWidth(window.innerWidth);
+        }
+
+        // Attach the event listener when the component mounts
+        window.addEventListener('resize', handleResize);
+    
+        // Clean up the event listener when the component unmounts
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+      }, []);
     return (
         <Provider store={itAdminStore}>
             <Routes>
-            <Route path="/" element={<SideNavComponent navigationElements={itAdminNavigations}/>}>
+            <Route path="/" element={screenWidth < 1024 ? <SideNavMobileComponent navigationElements={itAdminNavigations}/> : <SideNavComponent navigationElements={itAdminNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
                     <Route path="dashboard/">
