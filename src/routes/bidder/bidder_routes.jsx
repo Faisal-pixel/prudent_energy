@@ -36,7 +36,7 @@ const BidderRoutes = () => {
             <Route path="/" element={screenWidth < 1024 ? <SideNavMobileComponent navigationElements={bidderNavigations}/> : <SideNavComponent navigationElements={bidderNavigations}/>}>
             {/* The way I have done the routing is that when it get to dashboard it should render BidderDashboard and when it gets to dashboard/details/:rfqNo, it should render BidderDashboardDetails. :rfqNo is a variables that renders if the rfqNo exist. So it makes it dynamic. */}
                 <Route path="/" element={<TopNavComponent />}>
-                    <Route path="dashboard/">
+                    <Route path="dashboard">
                         <Route index element={<BidderDashboard />} />
                         <Route path="details/:rfqNo" element={<BidderDashboardDetails />}/>
                         <Route path="details" element={<BidderGeneralTemplateComponent />}/>

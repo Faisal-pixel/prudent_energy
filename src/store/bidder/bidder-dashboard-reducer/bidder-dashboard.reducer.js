@@ -4,17 +4,17 @@ const BIDDER_DASHBOARD_INITIAL_STATE = {
     bidderActivityStatusData: [
         {
             activityStatusTitle: "RFQ",
-            goTo: "/bidder-dashboard/bidder-request-for-quotes",
+            goTo: "/bidder/bidder-request-for-quotes",
             activityStatusValue: 9
         },
         {
             activityStatusTitle: "RFP",
-            goTo: "/bidder-dashboard/bidder-purchase-contracts",
+            goTo: "/bidder/bidder-purchase-contracts",
             activityStatusValue: 55
         },
         {
             activityStatusTitle: "Contracts",
-            goTo: "/bidder-dashboard/bidder-purchase-contracts",
+            goTo: "/bidder/bidder-purchase-contracts",
             activityStatusValue: 62
         }
     ],

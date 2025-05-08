@@ -1,6 +1,7 @@
 import React from "react";
 import {ReactComponent as SaphireProcureLogo} from "../assets/saphire_procure_logo.svg"
 import {ReactComponent as PrudentEnergyLogo} from "../assets/prudent_energy_logo.svg"
+import { Link } from "react-router-dom";
 
 const LogInPage = () => {
     return <>
@@ -18,9 +19,10 @@ const LogInPage = () => {
                     <h2 className="text-primaryBlue font-bold text-5xl text-center">Login</h2>
                     <p className="text-primaryBlue font-bold text-center">Please Select your account type to login.</p>
                     <div className="flex justify-around">
-                        <a href="#" className="rounded-md bg-primaryBlue py-1 px-5 text-white border border-2 border-primaryBlue hover:bg-white hover:text-primaryBlue">Login as Employee</a>
-                        <a href="#" className="rounded-md bg-primaryBlue py-1 px-5 text-white border border-2 border-primaryBlue hover:bg-white hover:text-primaryBlue">Login as Bidder</a>
+                        <a href="/basic-requestor/my-requisitions" className="rounded-md bg-primaryBlue py-1 px-5 text-white border border-2 border-primaryBlue hover:bg-white hover:text-primaryBlue">Login as Employee</a>
+                        <a href="/bidder/dashboard" className="rounded-md bg-primaryBlue py-1 px-5 text-white border border-2 border-primaryBlue hover:bg-white hover:text-primaryBlue">Login as Bidder</a>
                     </div>
+                    <p className="text-center">Not yet a registered vendor? <Link to="#" className="text-primaryBlue">Register now</Link></p>
                 </div>
             </section>
         </div>

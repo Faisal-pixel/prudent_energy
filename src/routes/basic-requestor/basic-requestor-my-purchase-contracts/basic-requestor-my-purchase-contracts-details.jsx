@@ -13,8 +13,8 @@ const BasicRequestorMyPurchaseContractsDetails = () => {
                 <Greetings />
             </div>
             <div className="space-x-3">
-                <Link to="#" className="px-2 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Download Digital Signature</Link>
-                <Link to="#" className="px-7 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Download Contract</Link>
+                <Link to="#" className="px-2 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Notify Winner for Signature</Link>
+                <Link to="#" className="px-7 py-1 border-2 border-primaryBlue rounded-md hover:text-white hover:bg-primaryBlue">Rate Bidder Performance</Link>
             </div>
             <div className="flex space-x-3">
                 <div className="max-h-[35rem] basis-2/3 overflow-y-auto">
